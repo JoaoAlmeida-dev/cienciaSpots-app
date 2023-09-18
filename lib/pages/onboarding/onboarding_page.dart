@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ciencia_spots/pages/onboarding/bottom_onboard.dart';
 import 'package:ciencia_spots/pages/onboarding/onboard_tile.dart';
 import 'package:ciencia_spots/pages/onboarding/skip_onboard_button.dart';
 import 'package:ciencia_spots/widgets/network/error.dart';
 import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -123,25 +123,25 @@ class _OnboardingPageState extends State<OnboardingPage>
 
   List<Widget> getChildren(BuildContext context) {
     return <Widget>[
-      OnboardTile(
-        top: Text(
-          AppLocalizations.of(context)!.onboardingTitle1,
-          textScaleFactor: 2,
-          style: const TextStyle(color: Colors.white),
-        ),
-        center: Lottie.network(
-          //"https://assets8.lottiefiles.com/packages/lf20_97qzkt8d.json"),
-          "https://assets1.lottiefiles.com/packages/lf20_z7bpt8g7.json",
-          errorBuilder: _lottieErrorBuilder,
-        ),
-        bottom: Text(
-          AppLocalizations.of(context)!.onboardingText1,
-          textScaleFactor: 1.5,
-          style: const TextStyle(color: Colors.white),
-        ),
-        bottomSheetHeight: bottomSheetHeight,
-        color: colorBackgrounds[0],
-      ),
+      // OnboardTile(
+      //   top: Text(
+      //     AppLocalizations.of(context)!.onboardingTitle1,
+      //     textScaleFactor: 2,
+      //     style: const TextStyle(color: Colors.white),
+      //   ),
+      //   center: Lottie.network(
+      //     //"https://assets8.lottiefiles.com/packages/lf20_97qzkt8d.json"),
+      //     "https://assets1.lottiefiles.com/packages/lf20_z7bpt8g7.json",
+      //     errorBuilder: _lottieErrorBuilder,
+      //   ),
+      //   bottom: Text(
+      //     AppLocalizations.of(context)!.onboardingText1,
+      //     textScaleFactor: 1.5,
+      //     style: const TextStyle(color: Colors.white),
+      //   ),
+      //   bottomSheetHeight: bottomSheetHeight,
+      //   color: colorBackgrounds[0],
+      // ),
       OnboardTile(
         top: Text(
           AppLocalizations.of(context)!.onboardingTitle2,
@@ -149,7 +149,7 @@ class _OnboardingPageState extends State<OnboardingPage>
           style: const TextStyle(color: Colors.white),
         ),
         center: Image.asset(
-          "Resources/Img/Campus/campus-iscte-3.jpg",
+          "Resources/Img/Nei/nei_principal_logo.png",
           errorBuilder: _lottieErrorBuilder,
         ),
         bottom: Text(

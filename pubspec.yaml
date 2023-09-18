@@ -64,6 +64,7 @@ flutter:
     - Resources/Img/
     - Resources/Img/Logo/
     - Resources/Img/Campus/
+    - Resources/Img/Nei/
     - Resources/Img/TimelineIcons/
     - Resources/Img/LeaderBoardIcons/
     - pubspec.yaml
