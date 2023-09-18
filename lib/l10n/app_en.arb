@@ -56,6 +56,7 @@
     "loginPassword":"Password",
     "loginUsername":"Username",
     "loginNoTextError":"Please enter some text",
+    "registrationButton":"Create an account",
     "registrationUsernameAlreadyExistsError":"Username already exists",
     "registrationEmailAlreadyExistsError":"Email already has an associated account",
     "registrationPasswordMustMatch":"Passwords must match",

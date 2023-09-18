@@ -1,13 +1,12 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:ciencia_spots/pages/auth/login/login_page.dart';
-import 'package:ciencia_spots/pages/auth/register/register_page.dart';
 import 'package:ciencia_spots/pages/home/home_page.dart';
 import 'package:ciencia_spots/services/auth/fenix_login_service.dart';
 import 'package:ciencia_spots/services/auth/login_service.dart';
 import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import 'auth_initial_page.dart';
@@ -44,7 +43,7 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
     super.initState();
     _pages = [
       AuthInitialPage(
-        iscteLoginCallback: _iscteLoginCallback,
+        createAccountCallback: _createAccountCallback,
         loggingComplete: loggingComplete,
         changeToLogIn: changeToLogIn,
       ),
@@ -54,11 +53,11 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
         loggingComplete: loggingComplete,
         animatedSwitcherDuration: animatedSwitcherDuration,
       ),
-      RegisterPage(
-        changeToLogIn: changeToLogIn,
-        loggingComplete: loggingComplete,
-        animatedSwitcherDuration: animatedSwitcherDuration,
-      ),
+      // RegisterPage(
+      //   changeToLogIn: changeToLogIn,
+      //   loggingComplete: loggingComplete,
+      //   animatedSwitcherDuration: animatedSwitcherDuration,
+      // ),
     ];
     _tabController = TabController(length: _pages.length, vsync: this);
     _lottieController = AnimationController(
@@ -104,6 +103,10 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
     setState(
       () => _isLoggedIn = true,
     );
+  }
+
+  Future<void> _createAccountCallback() async {
+    LoggerService.instance.debug("Submitting account creation callback");
   }
 
   Future<void> _iscteLoginCallback() async {

@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/services.dart';
 import 'package:ciencia_spots/helper/constants.dart';
 import 'package:ciencia_spots/models/auth/registration_form_result.dart';
 import 'package:ciencia_spots/pages/auth/register/registration_error.dart';
 import 'package:ciencia_spots/services/auth/auth_storage_service.dart';
 import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:flutter/services.dart';
 
 class RegistrationService {
   static const String AfiliationsFile =
@@ -79,7 +79,8 @@ class RegistrationService {
 
         LoginStorageService.storeLogInCredenials(
           username: registrationFormResult.username,
-          password: registrationFormResult.password,
+          password: "test",
+          // password: registrationFormResult.password, //TODO
           apiKey: responseApiToken,
         );
         responseRegistrationError = RegistrationError.noError;

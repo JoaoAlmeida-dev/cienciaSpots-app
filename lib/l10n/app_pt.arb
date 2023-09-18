@@ -56,6 +56,7 @@
     "loginPassword":"Palavra passe",
     "loginUsername":"Nome de Utilizador",
     "loginNoTextError":"Por favor escreve alguma coisa",
+    "registrationButton":"Criar conta",
     "registrationUsernameAlreadyExistsError":"Nome de utilizador já existe",
     "registrationEmailAlreadyExistsError":"Email já tem conta associada",
     "registrationPasswordMustMatch":"Palavras passe têm de ser identicas",
