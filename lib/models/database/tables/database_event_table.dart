@@ -1,11 +1,10 @@
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../timeline/event.dart';
 import '../database_helper.dart';
 
 class DatabaseEventTable {
-
   static const table = 'eventTable';
 
   static const columnId = 'id';

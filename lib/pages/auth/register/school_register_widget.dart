@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/pages/auth/register/registration_error.dart';
-import 'package:iscte_spots/services/auth/registration_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/pages/auth/register/registration_error.dart';
+import 'package:ciencia_spots/services/auth/registration_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class SchoolRegisterForm extends StatefulWidget {
   const SchoolRegisterForm({

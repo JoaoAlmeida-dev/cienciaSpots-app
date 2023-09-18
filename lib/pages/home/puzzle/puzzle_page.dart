@@ -1,13 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/helper/image_manipulation.dart';
-import 'package:iscte_spots/models/database/tables/database_puzzle_piece_table.dart';
-import 'package:iscte_spots/models/puzzle_piece.dart';
-import 'package:iscte_spots/models/spot.dart';
-import 'package:iscte_spots/pages/home/puzzle/puzzle_piece_widget.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/helper/image_manipulation.dart';
+import 'package:ciencia_spots/models/database/tables/database_puzzle_piece_table.dart';
+import 'package:ciencia_spots/models/puzzle_piece.dart';
+import 'package:ciencia_spots/models/spot.dart';
+import 'package:ciencia_spots/pages/home/puzzle/puzzle_piece_widget.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class PuzzlePage extends StatefulWidget {
   const PuzzlePage({

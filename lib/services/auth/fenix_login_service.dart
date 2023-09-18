@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 import 'auth_storage_service.dart';
 

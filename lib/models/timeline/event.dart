@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:iscte_spots/models/timeline/content.dart';
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/pages/timeline/rouded_timeline_icon.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/timeline/timeline_content_service.dart';
-import 'package:iscte_spots/services/timeline/timeline_topic_service.dart';
+import 'package:ciencia_spots/models/timeline/content.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/pages/timeline/rouded_timeline_icon.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/timeline/timeline_content_service.dart';
+import 'package:ciencia_spots/services/timeline/timeline_topic_service.dart';
 
 enum EventScope {
   iscte,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class YearTimelineTile extends StatefulWidget {
   const YearTimelineTile({

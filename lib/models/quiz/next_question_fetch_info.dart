@@ -1,4 +1,4 @@
-import 'package:iscte_spots/models/quiz/question.dart';
+import 'package:ciencia_spots/models/quiz/question.dart';
 
 class NextQuestionFetchInfo {
   int? trial_score;

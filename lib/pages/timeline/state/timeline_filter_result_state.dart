@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/pages/timeline/filter/timeline_filter_results_page.dart';
-import 'package:iscte_spots/pages/timeline/state/timeline_state.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/timeline/timeline_topic_service.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/pages/timeline/filter/timeline_filter_results_page.dart';
+import 'package:ciencia_spots/pages/timeline/state/timeline_state.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/timeline/timeline_topic_service.dart';
 
 class TimelineFilterResultState {
   TimelineFilterResultState._privateConstructor()

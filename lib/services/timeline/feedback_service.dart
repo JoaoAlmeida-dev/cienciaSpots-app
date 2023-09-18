@@ -1,12 +1,11 @@
 import 'dart:convert';
 
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/models/timeline/feedback_form_result.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/models/timeline/feedback_form_result.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 class FeedbackService {
-
   static Future<bool> sendFeedback(
       {required FeedbackFormResult feedbackFormResult}) async {
     LoggerService.instance.debug("Submiting $feedbackFormResult");

@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class ScannerOverlay extends CustomPainter {
   @override

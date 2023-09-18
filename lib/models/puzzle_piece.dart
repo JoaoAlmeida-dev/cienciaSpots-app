@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:iscte_spots/models/database/tables/database_puzzle_piece_table.dart';
-import 'package:iscte_spots/models/database/tables/database_spot_table.dart';
-import 'package:iscte_spots/models/spot.dart';
-import 'package:iscte_spots/pages/home/puzzle/puzzle_piece_widget.dart';
+import 'package:ciencia_spots/models/database/tables/database_puzzle_piece_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_spot_table.dart';
+import 'package:ciencia_spots/models/spot.dart';
+import 'package:ciencia_spots/pages/home/puzzle/puzzle_piece_widget.dart';
 
 class PuzzlePiece {
   PuzzlePiece({

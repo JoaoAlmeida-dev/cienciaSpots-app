@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/services/platform_service.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/services/platform_service.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class DynamicBackIconButton extends StatelessWidget {
   const DynamicBackIconButton({Key? key}) : super(key: key);

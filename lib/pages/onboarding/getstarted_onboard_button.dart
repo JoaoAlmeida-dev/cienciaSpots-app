@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/pages/auth/auth_page.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/onboard_service.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/pages/auth/auth_page.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/onboard_service.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class GetStartedOnboard extends StatelessWidget {
   const GetStartedOnboard({

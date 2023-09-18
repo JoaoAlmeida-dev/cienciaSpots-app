@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 import 'exceptions.dart';
 

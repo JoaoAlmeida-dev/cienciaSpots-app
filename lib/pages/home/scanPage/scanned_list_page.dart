@@ -1,10 +1,10 @@
 /*
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/helper/helper_methods.dart';
-import 'package:iscte_spots/models/database/tables/database_page_table.dart';
-import 'package:iscte_spots/models/visited_url.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/helper/helper_methods.dart';
+import 'package:ciencia_spots/models/database/tables/database_page_table.dart';
+import 'package:ciencia_spots/models/visited_url.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 
 class VisitedPagesPage extends StatefulWidget {
   const VisitedPagesPage({Key? key}) : super(key: key);

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/shared_prefs_service.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
-import 'package:iscte_spots/widgets/my_app_bar.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/shared_prefs_service.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
+import 'package:ciencia_spots/widgets/my_app_bar.dart';
 import 'package:yaml/yaml.dart';
 
 class SettingsPage extends StatefulWidget {

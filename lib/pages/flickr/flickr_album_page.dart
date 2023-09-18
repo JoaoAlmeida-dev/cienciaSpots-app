@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/models/flickr/flickr_photo.dart';
-import 'package:iscte_spots/models/flickr/flickr_photoset.dart';
-import 'package:iscte_spots/services/flickr/flickr_photoset_service.dart';
-import 'package:iscte_spots/services/flickr/flickr_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
-import 'package:iscte_spots/widgets/my_app_bar.dart';
+import 'package:ciencia_spots/models/flickr/flickr_photo.dart';
+import 'package:ciencia_spots/models/flickr/flickr_photoset.dart';
+import 'package:ciencia_spots/services/flickr/flickr_photoset_service.dart';
+import 'package:ciencia_spots/services/flickr/flickr_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/widgets/my_app_bar.dart';
 
 class FlickAlbumPage extends StatefulWidget {
   FlickAlbumPage({Key? key, required this.album}) : super(key: key);

@@ -1,8 +1,8 @@
+import 'package:ciencia_spots/services/platform_service.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/services/platform_service.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 
 class DynamicErrorWidget extends StatelessWidget {
   final Function()? onRefresh;
@@ -56,10 +56,11 @@ class DynamicErrorWidget extends StatelessWidget {
                 if (onRefresh != null)
                   Padding(
                     padding: const EdgeInsets.all(5.0),
-                    child: refreshText ?? Text(
+                    child: refreshText ??
+                        Text(
                           AppLocalizations.of(context)!.errorTouchToRefresh,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                   ),
               ],
             ),

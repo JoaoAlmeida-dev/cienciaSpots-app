@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 class TimelineFilterParams {
   TimelineFilterParams({

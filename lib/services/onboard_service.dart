@@ -1,10 +1,8 @@
-
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboadingService {
   static const String _onboardKey = "onboard";
-  
 
   static Future<bool> isOnboarded() async {
     final prefs = await SharedPreferences.getInstance();

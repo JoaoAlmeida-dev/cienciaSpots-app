@@ -1,4 +1,4 @@
-name: iscte_spots
+name: ciencia_spots
 description: Flutter project to support iscte's 50th aniversary.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 

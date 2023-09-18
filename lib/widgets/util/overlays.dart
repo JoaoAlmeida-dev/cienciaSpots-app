@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 Future<void> showNetworkErrorOverlay(BuildContext context) async {
   LoggerService.instance.info("Inserted Network error overlay");

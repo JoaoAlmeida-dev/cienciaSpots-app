@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/helper/datetime_extension.dart';
+import 'package:ciencia_spots/helper/datetime_extension.dart';
 
 class EventTimelineIndicator extends StatelessWidget {
   const EventTimelineIndicator({

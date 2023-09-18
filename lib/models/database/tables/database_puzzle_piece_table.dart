@@ -1,8 +1,8 @@
-import 'package:iscte_spots/models/database/database_helper.dart';
-import 'package:iscte_spots/models/database/tables/database_spot_table.dart';
-import 'package:iscte_spots/models/puzzle_piece.dart';
-import 'package:iscte_spots/pages/home/puzzle/puzzle_page.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/models/database/database_helper.dart';
+import 'package:ciencia_spots/models/database/tables/database_spot_table.dart';
+import 'package:ciencia_spots/models/puzzle_piece.dart';
+import 'package:ciencia_spots/pages/home/puzzle/puzzle_page.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabasePuzzlePieceTable {

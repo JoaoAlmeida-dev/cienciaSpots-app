@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/models/timeline/timeline_filter_params.dart';
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/pages/timeline/filter/timeline_filter_scopes_widget.dart';
-import 'package:iscte_spots/pages/timeline/filter/timeline_filter_topics_widget.dart';
-import 'package:iscte_spots/pages/timeline/state/timeline_filter_result_state.dart';
-import 'package:iscte_spots/pages/timeline/state/timeline_state.dart';
-import 'package:iscte_spots/services/platform_service.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_icon_button.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_field.dart';
-import 'package:iscte_spots/widgets/network/error.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/models/timeline/timeline_filter_params.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/pages/timeline/filter/timeline_filter_scopes_widget.dart';
+import 'package:ciencia_spots/pages/timeline/filter/timeline_filter_topics_widget.dart';
+import 'package:ciencia_spots/pages/timeline/state/timeline_filter_result_state.dart';
+import 'package:ciencia_spots/pages/timeline/state/timeline_state.dart';
+import 'package:ciencia_spots/services/platform_service.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_icon_button.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_field.dart';
+import 'package:ciencia_spots/widgets/network/error.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 import '../../../widgets/dynamic_widgets/dynamic_loading_widget.dart';
 

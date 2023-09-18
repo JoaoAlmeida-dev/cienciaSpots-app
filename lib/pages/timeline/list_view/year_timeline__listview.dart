@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/pages/timeline/list_view/year_timeline_list_tile.dart';
-import 'package:iscte_spots/pages/timeline/web_scroll_behaviour.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
-import 'package:iscte_spots/widgets/network/error.dart';
+import 'package:ciencia_spots/pages/timeline/list_view/year_timeline_list_tile.dart';
+import 'package:ciencia_spots/pages/timeline/web_scroll_behaviour.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/widgets/network/error.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class YearTimeline extends StatefulWidget {

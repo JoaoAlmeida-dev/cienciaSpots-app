@@ -1,10 +1,9 @@
 import 'dart:convert';
 
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/models/timeline/content.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/models/timeline/content.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-
 
 class TimelineContentService {
   static Future<List<Content>> fetchContents({required int eventId}) async {

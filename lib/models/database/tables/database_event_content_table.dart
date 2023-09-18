@@ -1,4 +1,4 @@
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../database_helper.dart';
@@ -6,7 +6,6 @@ import 'database_content_table.dart';
 import 'database_event_table.dart';
 
 class DatabaseEventContentTable {
-
   static const table = 'event_contentTable';
 
   static const columnContentId = 'content_id';
@@ -83,7 +82,8 @@ class DatabaseEventContentTable {
       eventContentDBConnection.toMap(),
       conflictAlgorithm: ConflictAlgorithm.abort,
     );
-    LoggerService.instance.debug("Inserted: $eventContentDBConnection into $table");
+    LoggerService.instance
+        .debug("Inserted: $eventContentDBConnection into $table");
     return insertedID;
   }
 

@@ -2,8 +2,8 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iscte_spots/widgets/iscte_confetti_widget.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/widgets/iscte_confetti_widget.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 import 'package:lottie/lottie.dart';
 
 class SucessScanWidget extends StatelessWidget {

@@ -1,13 +1,12 @@
 import 'dart:convert';
 
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 class TimelineTopicService {
-
   static Future<List<Event>> fetchEvents(
       {Iterable<int> topicIds = const [],
       Iterable<String> scopes = const []}) async {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/pages/timeline/events/timeline_tile.dart';
-import 'package:iscte_spots/pages/timeline/web_scroll_behaviour.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/pages/timeline/events/timeline_tile.dart';
+import 'package:ciencia_spots/pages/timeline/web_scroll_behaviour.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 
 class EventTimelineListViewBuilder extends StatefulWidget {
   const EventTimelineListViewBuilder({

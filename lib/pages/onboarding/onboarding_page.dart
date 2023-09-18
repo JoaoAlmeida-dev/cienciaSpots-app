@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/pages/onboarding/bottom_onboard.dart';
-import 'package:iscte_spots/pages/onboarding/onboard_tile.dart';
-import 'package:iscte_spots/pages/onboarding/skip_onboard_button.dart';
-import 'package:iscte_spots/widgets/network/error.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/pages/onboarding/bottom_onboard.dart';
+import 'package:ciencia_spots/pages/onboarding/onboard_tile.dart';
+import 'package:ciencia_spots/pages/onboarding/skip_onboard_button.dart';
+import 'package:ciencia_spots/widgets/network/error.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingPage extends StatefulWidget {

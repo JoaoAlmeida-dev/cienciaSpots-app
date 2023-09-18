@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
 
 class TimelineInformationChild extends StatelessWidget {
   const TimelineInformationChild({

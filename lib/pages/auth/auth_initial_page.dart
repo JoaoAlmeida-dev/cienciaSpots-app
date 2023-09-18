@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/services/platform_service.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/services/platform_service.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class AuthInitialPage extends StatelessWidget {
   const AuthInitialPage({

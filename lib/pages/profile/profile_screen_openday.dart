@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:iscte_spots/pages/profile/placeholder.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/pages/profile/placeholder.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 const API_ADDRESS = "http://192.168.1.66";

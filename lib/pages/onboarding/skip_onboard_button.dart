@@ -1,6 +1,5 @@
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 class SkipButton extends StatelessWidget {
   const SkipButton({
@@ -9,8 +8,7 @@ class SkipButton extends StatelessWidget {
     required int numPages,
     required this.animDuration,
     required this.textStyle,
-  })  :
-        _pageController = pageController,
+  })  : _pageController = pageController,
         _numPages = numPages,
         super(key: key);
 

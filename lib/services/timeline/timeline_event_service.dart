@@ -1,12 +1,11 @@
 import 'dart:convert';
 
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 class TimelineEventService {
-
   static Future<List<Event>> fetchAllEvents() async {
     try {
       http.Response response = await http.get(
@@ -23,7 +22,8 @@ class TimelineEventService {
       LoggerService.instance
           .info("fetched ${eventsList.length} events from server");
       return eventsList;
-    } catch (e) {LoggerService.instance.error(e);
+    } catch (e) {
+      LoggerService.instance.error(e);
       return Future.error(e);
     }
   }
@@ -43,7 +43,8 @@ class TimelineEventService {
       LoggerService.instance
           .info("fetched ${eventsList.length} events from server");
       return eventsList;
-    } catch (e) {LoggerService.instance.error(e);
+    } catch (e) {
+      LoggerService.instance.error(e);
       return Future.error(e);
     }
   }
@@ -59,7 +60,8 @@ class TimelineEventService {
       var event = Event.fromMap(decodedResponse);
       LoggerService.instance.info("fetched $event from server");
       return event;
-    } catch (e) {LoggerService.instance.error(e);
+    } catch (e) {
+      LoggerService.instance.error(e);
       return Future.error(e);
     }
   }
@@ -79,7 +81,8 @@ class TimelineEventService {
       LoggerService.instance
           .info("fetched ${yearsList.length} years from server");
       return yearsList;
-    } catch (e) {LoggerService.instance.error(e);
+    } catch (e) {
+      LoggerService.instance.error(e);
       return Future.error(e);
     }
   }

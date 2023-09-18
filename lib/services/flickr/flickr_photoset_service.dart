@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/models/flickr/flickr_photo.dart';
-import 'package:iscte_spots/services/flickr/flickr_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/models/flickr/flickr_photo.dart';
+import 'package:ciencia_spots/services/flickr/flickr_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 class FLickrPhotosetService extends FlickrService {
   final StreamController<FlickrPhoto> _controller =

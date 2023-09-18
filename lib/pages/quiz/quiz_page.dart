@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/models/quiz/trial.dart';
-import 'package:iscte_spots/pages/quiz/question_widget.dart';
-import 'package:iscte_spots/pages/quiz/quiz_finished_page.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/quiz/quiz_service.dart';
-import 'package:iscte_spots/services/quiz/trial_controller.dart';
-import 'package:iscte_spots/widgets/dialogs/custom_dialogs.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
-import 'package:iscte_spots/widgets/network/error.dart';
+import 'package:ciencia_spots/models/quiz/trial.dart';
+import 'package:ciencia_spots/pages/quiz/question_widget.dart';
+import 'package:ciencia_spots/pages/quiz/quiz_finished_page.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/quiz/quiz_service.dart';
+import 'package:ciencia_spots/services/quiz/trial_controller.dart';
+import 'package:ciencia_spots/widgets/dialogs/custom_dialogs.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/widgets/network/error.dart';
 
 class QuizPage extends StatefulWidget {
   final TrialController trialController;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/models/timeline/timeline_filter_params.dart';
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/pages/timeline/state/timeline_state.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/models/timeline/timeline_filter_params.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/pages/timeline/state/timeline_state.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class TopicsFilterWidget extends StatelessWidget {
   TopicsFilterWidget({

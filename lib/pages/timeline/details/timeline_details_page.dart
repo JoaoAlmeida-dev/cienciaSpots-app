@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/helper/helper_methods.dart';
-import 'package:iscte_spots/models/flickr/flickr_photo.dart';
-import 'package:iscte_spots/models/timeline/content.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/services/flickr/flickr_url_converter_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/timeline/timeline_event_service.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
-import 'package:iscte_spots/widgets/my_app_bar.dart';
-import 'package:iscte_spots/widgets/network/error.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/helper/helper_methods.dart';
+import 'package:ciencia_spots/models/flickr/flickr_photo.dart';
+import 'package:ciencia_spots/models/timeline/content.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/services/flickr/flickr_url_converter_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/timeline/timeline_event_service.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/widgets/my_app_bar.dart';
+import 'package:ciencia_spots/widgets/network/error.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class TimeLineDetailsPage extends StatefulWidget {

@@ -3,15 +3,15 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/models/quiz/quiz.dart';
-import 'package:iscte_spots/models/quiz/trial.dart';
-import 'package:iscte_spots/pages/leaderboard/leaderboard_screen.dart';
-import 'package:iscte_spots/services/auth/auth_storage_service.dart';
-import 'package:iscte_spots/services/auth/exceptions.dart';
-import 'package:iscte_spots/services/auth/login_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/quiz/quiz_exceptions.dart';
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/models/quiz/quiz.dart';
+import 'package:ciencia_spots/models/quiz/trial.dart';
+import 'package:ciencia_spots/pages/leaderboard/leaderboard_screen.dart';
+import 'package:ciencia_spots/services/auth/auth_storage_service.dart';
+import 'package:ciencia_spots/services/auth/exceptions.dart';
+import 'package:ciencia_spots/services/auth/login_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/quiz/quiz_exceptions.dart';
 
 const API_ADDRESS = BackEndConstants.API_ADDRESS;
 const API_ADDRESS_TEST = "http://192.168.1.66";

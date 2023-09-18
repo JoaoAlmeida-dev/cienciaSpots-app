@@ -1,11 +1,10 @@
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../visited_url.dart';
 import '../database_helper.dart';
 
 class DatabasePageTable {
-
   static const table = 'pageTable';
   static const columnId = '_id';
   static const columnContent = 'content';
@@ -76,7 +75,8 @@ class DatabasePageTable {
               page.toMap(),
               conflictAlgorithm: ConflictAlgorithm.abort,
             ),
-            LoggerService.instance.debug("Inserted: $page into $table as batch into $table")
+            LoggerService.instance
+                .debug("Inserted: $page into $table as batch into $table")
           });
     }
     batch.commit(noResult: true);

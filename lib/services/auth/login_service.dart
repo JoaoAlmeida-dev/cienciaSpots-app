@@ -3,15 +3,15 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/models/auth/login_form_result.dart';
-import 'package:iscte_spots/models/database/tables/database_puzzle_piece_table.dart';
-import 'package:iscte_spots/pages/auth/auth_page.dart';
-import 'package:iscte_spots/services/auth/auth_storage_service.dart';
-import 'package:iscte_spots/services/auth/fenix_login_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/onboard_service.dart';
-import 'package:iscte_spots/services/shared_prefs_service.dart';
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/models/auth/login_form_result.dart';
+import 'package:ciencia_spots/models/database/tables/database_puzzle_piece_table.dart';
+import 'package:ciencia_spots/pages/auth/auth_page.dart';
+import 'package:ciencia_spots/services/auth/auth_storage_service.dart';
+import 'package:ciencia_spots/services/auth/fenix_login_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/onboard_service.dart';
+import 'package:ciencia_spots/services/shared_prefs_service.dart';
 
 class LoginService {
   static Future<int> login(LoginFormResult loginFormResult) async {

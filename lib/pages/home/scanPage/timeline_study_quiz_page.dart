@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/models/requests/spot_info_request.dart';
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/models/timeline/timeline_filter_params.dart';
-import 'package:iscte_spots/pages/quiz/quiz_list_menu.dart';
-import 'package:iscte_spots/pages/timeline/details/timeline_details_page.dart';
-import 'package:iscte_spots/pages/timeline/timeline_body.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/timeline/timeline_topic_service.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
-import 'package:iscte_spots/widgets/my_app_bar.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/models/requests/spot_info_request.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/models/timeline/timeline_filter_params.dart';
+import 'package:ciencia_spots/pages/quiz/quiz_list_menu.dart';
+import 'package:ciencia_spots/pages/timeline/details/timeline_details_page.dart';
+import 'package:ciencia_spots/pages/timeline/timeline_body.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/timeline/timeline_topic_service.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
+import 'package:ciencia_spots/widgets/my_app_bar.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 class TimelineStudyForQuiz extends StatelessWidget {
   static const String pageRoute = "QRScanResults";

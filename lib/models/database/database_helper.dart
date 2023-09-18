@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:iscte_spots/models/database/tables/database_content_table.dart';
-import 'package:iscte_spots/models/database/tables/database_event_content_table.dart';
-import 'package:iscte_spots/models/database/tables/database_event_table.dart';
-import 'package:iscte_spots/models/database/tables/database_event_topic_table.dart';
-import 'package:iscte_spots/models/database/tables/database_page_table.dart';
-import 'package:iscte_spots/models/database/tables/database_puzzle_piece_table.dart';
-import 'package:iscte_spots/models/database/tables/database_spot_table.dart';
-import 'package:iscte_spots/models/database/tables/database_topic_table.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/models/database/tables/database_content_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_event_content_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_event_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_event_topic_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_page_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_puzzle_piece_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_spot_table.dart';
+import 'package:ciencia_spots/models/database/tables/database_topic_table.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:ciencia_spots/services/flickr/flickr_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:http/http.dart' as http;
-import 'package:iscte_spots/services/flickr/flickr_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 class FlickrIsctePhotoService extends FlickrService {
   static const String tags = "iscte";
@@ -55,7 +55,8 @@ class FlickrIsctePhotoService extends FlickrService {
         _controller.sink.addError(response.statusCode);
       }
     } else {
-      LoggerService.instance.debug("Fetching already in progress, no effect was taken");
+      LoggerService.instance
+          .debug("Fetching already in progress, no effect was taken");
     }
   }
 }

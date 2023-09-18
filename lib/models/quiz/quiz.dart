@@ -1,5 +1,5 @@
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 class Quiz {
   int number;

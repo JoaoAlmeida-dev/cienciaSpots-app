@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:iscte_spots/helper/image_manipulation.dart';
-import 'package:iscte_spots/pages/home/splashScreen/moving_widget.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:ciencia_spots/helper/image_manipulation.dart';
+import 'package:ciencia_spots/pages/home/splashScreen/moving_widget.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 
 /*
 class Shaker extends StatefulWidget {

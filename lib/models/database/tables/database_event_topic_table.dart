@@ -1,12 +1,11 @@
-import 'package:iscte_spots/models/database/tables/database_topic_table.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/models/database/tables/database_topic_table.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../database_helper.dart';
 import 'database_event_table.dart';
 
 class DatabaseEventTopicTable {
-
   static const table = 'topic_eventTable';
 
   static const columnTopicId = 'topic_id';
@@ -18,7 +17,7 @@ class DatabaseEventTopicTable {
       event_id INTEGER,
       PRIMARY KEY (`topic_id`, `event_id`),
       FOREIGN KEY (`event_id`) REFERENCES `eventTable` (`_id`),
-      FOREIGN KEY (`topic_id`) REFERENCES `contentTable` (`_id`) 
+      FOREIGN KEY (`topic_id`) REFERENCES `contentTable` (`_id`)
       )
     ''';*/
 
@@ -70,7 +69,8 @@ class DatabaseEventTopicTable {
       eventTopicDBConnection.toMap(),
       conflictAlgorithm: ConflictAlgorithm.abort,
     );
-    LoggerService.instance.debug("Inserted: $eventTopicDBConnection into $table");
+    LoggerService.instance
+        .debug("Inserted: $eventTopicDBConnection into $table");
     return insertedID;
   }
 

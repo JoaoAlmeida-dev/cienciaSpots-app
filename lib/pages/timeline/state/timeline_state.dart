@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/change_notifier.dart' show ValueNotifier;
-import 'package:iscte_spots/models/timeline/event.dart';
-import 'package:iscte_spots/models/timeline/timeline_filter_params.dart';
-import 'package:iscte_spots/models/timeline/topic.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/services/shared_prefs_service.dart';
-import 'package:iscte_spots/services/timeline/timeline_event_service.dart';
-import 'package:iscte_spots/services/timeline/timeline_topic_service.dart';
+import 'package:ciencia_spots/models/timeline/event.dart';
+import 'package:ciencia_spots/models/timeline/timeline_filter_params.dart';
+import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/services/shared_prefs_service.dart';
+import 'package:ciencia_spots/services/timeline/timeline_event_service.dart';
+import 'package:ciencia_spots/services/timeline/timeline_topic_service.dart';
 
 class TimelineState {
   TimelineState._privateConstructor()

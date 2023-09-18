@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:iscte_spots/pages/home/nav_drawer/page_routes.dart';
-import 'package:iscte_spots/pages/home/splashScreen/splash.dart';
-import 'package:iscte_spots/services/platform_service.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
+import 'package:ciencia_spots/pages/home/nav_drawer/page_routes.dart';
+import 'package:ciencia_spots/pages/home/splashScreen/splash.dart';
+import 'package:ciencia_spots/services/platform_service.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 const int puzzlePageIndex = 0;
 const int qrPageIndex = 1;
@@ -47,7 +46,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        title: 'IscteSpots',
+        title: 'CienciaSpots',
         theme: IscteTheme.cupertinoLightThemeData,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
@@ -58,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       return MaterialApp(
         //showSemanticsDebugger: true,
         debugShowCheckedModeBanner: false,
-        title: 'IscteSpots',
+        title: 'CienciaSpots',
         //darkTheme: IscteTheme.darkThemeData,
         theme: IscteTheme.lightThemeData,
         localizationsDelegates: AppLocalizations.localizationsDelegates,

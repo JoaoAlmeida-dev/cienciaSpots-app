@@ -1,5 +1,5 @@
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:flutter/material.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 class NavigationService {
   /// Creating the first instance
@@ -15,7 +15,6 @@ class NavigationService {
   ///This is where the singleton setup we did
   ///would help as the state is internally maintained
   final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
-
 
   /// For navigating back to the previous screen
   static dynamic pop([dynamic popValue]) {

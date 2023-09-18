@@ -4,12 +4,12 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/models/requests/spot_info_request.dart';
-import 'package:iscte_spots/models/requests/topic_request.dart';
-import 'package:iscte_spots/models/timeline/content.dart';
-import 'package:iscte_spots/services/auth/exceptions.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/models/requests/spot_info_request.dart';
+import 'package:ciencia_spots/models/requests/topic_request.dart';
+import 'package:ciencia_spots/models/timeline/content.dart';
+import 'package:ciencia_spots/services/auth/exceptions.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import 'auth/auth_storage_service.dart';

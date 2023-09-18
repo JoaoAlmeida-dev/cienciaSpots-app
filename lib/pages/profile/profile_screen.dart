@@ -5,12 +5,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:iscte_spots/helper/constants.dart';
-import 'package:iscte_spots/pages/profile/placeholder.dart';
-import 'package:iscte_spots/services/auth/auth_storage_service.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
-import 'package:iscte_spots/widgets/my_app_bar.dart';
+import 'package:ciencia_spots/helper/constants.dart';
+import 'package:ciencia_spots/pages/profile/placeholder.dart';
+import 'package:ciencia_spots/services/auth/auth_storage_service.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
+import 'package:ciencia_spots/widgets/my_app_bar.dart';
 
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 const API_ADDRESS = BackEndConstants.API_ADDRESS;

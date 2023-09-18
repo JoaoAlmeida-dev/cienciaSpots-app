@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:iscte_spots/pages/home/home_page.dart';
-import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:ciencia_spots/pages/home/home_page.dart';
+import 'package:ciencia_spots/services/logging/LoggerService.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
