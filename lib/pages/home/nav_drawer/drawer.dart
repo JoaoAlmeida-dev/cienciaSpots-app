@@ -1,15 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ciencia_spots/pages/flickr/flickr_page.dart';
 import 'package:ciencia_spots/pages/onboarding/onboarding_page.dart';
 import 'package:ciencia_spots/pages/profile/profile_screen.dart';
 import 'package:ciencia_spots/pages/quiz/quiz_list_menu.dart';
 import 'package:ciencia_spots/pages/settings/settings_page.dart';
 import 'package:ciencia_spots/pages/spotChooser/spot_chooser_page.dart';
-import 'package:ciencia_spots/pages/timeline/timeline_page.dart';
 import 'package:ciencia_spots/services/auth/login_service.dart';
 import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyNavigationDrawer extends StatelessWidget {
   const MyNavigationDrawer({
@@ -40,25 +37,6 @@ class MyNavigationDrawer extends StatelessWidget {
         },
       ),
       ListTile(
-        leading: const Icon(TimelinePage.icon),
-        title: Text(AppLocalizations.of(context)!.timelineScreen,
-            style: tileTextStyle),
-        onTap: () {
-//          PageRoutes.animateToPage(context, page: TimelinePage());
-          navigateBackToPuzzleCallback();
-          Navigator.of(context).popAndPushNamed(TimelinePage.pageRoute);
-        },
-      ),
-/*
-      ListTile(
-        leading: const Icon(Icons.touch_app_outlined),
-        title: Text(AppLocalizations.of(context)!.shakerScreen,style: tileTextStyle),
-        onTap: () {
-//          PageRoutes.animateToPage(context, page: Shaker());
-          Navigator.of(context).popAndPushNamed(Shaker.pageRoute);
-        },
-      ),*/
-      ListTile(
         leading: const Icon(QuizMenu.icon),
         title: Text(AppLocalizations.of(context)!.quizScreen,
             style: tileTextStyle),
@@ -68,24 +46,6 @@ class MyNavigationDrawer extends StatelessWidget {
           Navigator.of(context).popAndPushNamed(QuizMenu.pageRoute);
         },
       ),
-      ListTile(
-        leading: const FaIcon(FlickrPage.icon),
-        title: Text(AppLocalizations.of(context)!.flickrScreen,
-            style: tileTextStyle),
-        onTap: () {
-//          PageRoutes.animateToPage(context, page: FlickrPage());
-          navigateBackToPuzzleCallback();
-          Navigator.of(context).popAndPushNamed(FlickrPage.pageRoute);
-        },
-      ),
-/*      ListTile(
-        leading: const Icon(Icons.leaderboard),
-        title: Text(AppLocalizations.of(context)!.leaderBoardScreen),
-        onTap: () {
-          //PageRoutes.animateToPage(context, page: const LeaderBoardPage());
-          Navigator.of(context).popAndPushNamed(LeaderBoardPage.pageRoute);
-        },
-      ),*/
       ExpansionTile(
         iconColor: IscteTheme.iscteColor,
         title: Text(

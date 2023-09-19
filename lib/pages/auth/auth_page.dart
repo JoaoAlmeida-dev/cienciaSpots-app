@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:ciencia_spots/pages/auth/login/login_page.dart';
+import 'package:ciencia_spots/pages/auth/register/register_page.dart';
 import 'package:ciencia_spots/pages/home/home_page.dart';
 import 'package:ciencia_spots/services/auth/fenix_login_service.dart';
 import 'package:ciencia_spots/services/auth/login_service.dart';
@@ -8,8 +9,6 @@ import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
-import 'auth_initial_page.dart';
 
 class AuthPage extends StatefulWidget {
   static const pageRoute = "/auth";
@@ -24,9 +23,9 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
   bool _isLoggedIn = true;
   bool _isLoading = true;
   late List<Widget> _pages;
-  final int _initialIndex = 0;
-  final int _loginIndex = 1;
-  final int _registerIndex = 2;
+  final int _initialIndex = -1;
+  final int _loginIndex = 0;
+  final int _registerIndex = 1;
   late TabController _tabController;
   late final AnimationController _lottieController;
   final animatedSwitcherDuration = const Duration(seconds: 1);
@@ -42,22 +41,23 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _pages = [
-      AuthInitialPage(
-        createAccountCallback: _createAccountCallback,
-        loggingComplete: loggingComplete,
-        changeToLogIn: changeToLogIn,
-      ),
+      // AuthInitialPage(
+      //   createAccountCallback: _createAccountCallback,
+      //   loggingComplete: loggingComplete,
+      //   changeToLogIn: changeToLogIn,
+      //   changeToSignUp: changeToSignUp,
+      // ),
       LoginPage(
         changeToAuthInitial: changeToAuthInitial,
         changeToSignUp: changeToSignUp,
         loggingComplete: loggingComplete,
         animatedSwitcherDuration: animatedSwitcherDuration,
       ),
-      // RegisterPage(
-      //   changeToLogIn: changeToLogIn,
-      //   loggingComplete: loggingComplete,
-      //   animatedSwitcherDuration: animatedSwitcherDuration,
-      // ),
+      RegisterPage(
+        changeToLogIn: changeToLogIn,
+        loggingComplete: loggingComplete,
+        animatedSwitcherDuration: animatedSwitcherDuration,
+      ),
     ];
     _tabController = TabController(length: _pages.length, vsync: this);
     _lottieController = AnimationController(
@@ -107,6 +107,10 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
 
   Future<void> _createAccountCallback() async {
     LoggerService.instance.debug("Submitting account creation callback");
+    setState(() => _isLoading = true);
+
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() => _isLoading = false);
   }
 
   Future<void> _iscteLoginCallback() async {
@@ -146,9 +150,7 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
       body: AnimatedSwitcher(
         duration: animatedSwitcherDuration,
         child: _isLoading
-            ? const DynamicLoadingWidget(
-                strokeWidth: 10,
-              )
+            ? const DynamicLoadingWidget()
             : _isLoggedIn
                 ? lottieCompleteLoginBuilder()
                 : TabBarView(

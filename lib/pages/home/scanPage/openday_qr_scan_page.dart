@@ -1,12 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ciencia_spots/models/database/tables/database_spot_table.dart';
 import 'package:ciencia_spots/models/requests/spot_info_request.dart';
-import 'package:ciencia_spots/models/requests/topic_request.dart';
-import 'package:ciencia_spots/models/spot.dart';
 import 'package:ciencia_spots/pages/home/scanPage/qr_scan_camera_controls.dart';
 import 'package:ciencia_spots/pages/home/scanPage/scanner_overlay_painter.dart';
-import 'package:ciencia_spots/pages/home/scanPage/timeline_study_quiz_page.dart';
 import 'package:ciencia_spots/services/auth/exceptions.dart';
 import 'package:ciencia_spots/services/auth/login_service.dart';
 import 'package:ciencia_spots/services/logging/LoggerService.dart';
@@ -15,6 +9,8 @@ import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart'
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
 import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -175,46 +171,46 @@ class QRScanPageOpenDayState extends State<QRScanPageOpenDay> {
       }
       LoggerService.instance.debug("continueScan: $continueScan");
 
-      if (continueScan) {
-        List<Spot> spots =
-            (await DatabaseSpotTable.getAllWithIds([spotInfoRequest.id]));
-        if (spots.isNotEmpty) {
-          Spot spot = spots.first;
-          if (!spot.visited) {
-            spot.visited = true;
-            await DatabaseSpotTable.update(spot);
-          }
-        }
-        if (mounted) {
-          TopicRequest topicRequestCompleted = await QRScanService.topicRequest(
-              context: context, topicID: spotInfoRequest.id);
-
-          LoggerService.instance
-              .debug("spotInfoRequest: $topicRequestCompleted");
-        }
-
-        if (!mounted) return;
-
-        Navigator.of(context).pushNamed(
-          TimelineStudyForQuiz.pageRoute,
-          arguments: spotInfoRequest,
-        );
-        widget.navigateBackToPuzzleCallback();
-
-        if (!mounted) return;
-        await DynamicAlertDialog.showDynamicDialog(
-          icon: Icon(Icons.timeline, size: DynamicAlertDialog.iconSize),
-          context: context,
-          title: Text(
-            AppLocalizations.of(context)!
-                .qrScanResultExplanationDialogTitle(spotInfoRequest.title),
-          ),
-          content: Text(
-            AppLocalizations.of(context)!
-                .qrScanResultExplanationDialogContent(spotInfoRequest.title),
-          ),
-        );
-      }
+      // if (continueScan) {
+      //   List<Spot> spots =
+      //       (await DatabaseSpotTable.getAllWithIds([spotInfoRequest.id]));
+      //   if (spots.isNotEmpty) {
+      //     Spot spot = spots.first;
+      //     if (!spot.visited) {
+      //       spot.visited = true;
+      //       await DatabaseSpotTable.update(spot);
+      //     }
+      //   }
+      //   if (mounted) {
+      //     TopicRequest topicRequestCompleted = await QRScanService.topicRequest(
+      //         context: context, topicID: spotInfoRequest.id);
+      //
+      //     LoggerService.instance
+      //         .debug("spotInfoRequest: $topicRequestCompleted");
+      //   }
+      //
+      //   if (!mounted) return;
+      //
+      //   Navigator.of(context).pushNamed(
+      //     TimelineStudyForQuiz.pageRoute,
+      //     arguments: spotInfoRequest,
+      //   );
+      //   widget.navigateBackToPuzzleCallback();
+      //
+      //   if (!mounted) return;
+      //   await DynamicAlertDialog.showDynamicDialog(
+      //     icon: Icon(Icons.timeline, size: DynamicAlertDialog.iconSize),
+      //     context: context,
+      //     title: Text(
+      //       AppLocalizations.of(context)!
+      //           .qrScanResultExplanationDialogTitle(spotInfoRequest.title),
+      //     ),
+      //     content: Text(
+      //       AppLocalizations.of(context)!
+      //           .qrScanResultExplanationDialogContent(spotInfoRequest.title),
+      //     ),
+      //   );
+      // }
     } on LoginException {
       LoggerService.instance.error("LoginException");
       if (mounted) {

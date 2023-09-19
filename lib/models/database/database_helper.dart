@@ -1,9 +1,5 @@
 import 'dart:io';
 
-import 'package:ciencia_spots/models/database/tables/database_content_table.dart';
-import 'package:ciencia_spots/models/database/tables/database_event_content_table.dart';
-import 'package:ciencia_spots/models/database/tables/database_event_table.dart';
-import 'package:ciencia_spots/models/database/tables/database_event_topic_table.dart';
 import 'package:ciencia_spots/models/database/tables/database_page_table.dart';
 import 'package:ciencia_spots/models/database/tables/database_puzzle_piece_table.dart';
 import 'package:ciencia_spots/models/database/tables/database_spot_table.dart';
@@ -40,10 +36,6 @@ class DatabaseHelper {
     LoggerService.instance.debug('Started OnCreate to the db');
     await DatabasePageTable.onCreate(db);
     await DatabaseTopicTable.onCreate(db);
-    await DatabaseEventTable.onCreate(db);
-    await DatabaseContentTable.onCreate(db);
-    await DatabaseEventTopicTable.onCreate(db);
-    await DatabaseEventContentTable.onCreate(db);
     await DatabasePuzzlePieceTable.onCreate(db);
     await DatabaseSpotTable.onCreate(db);
 
@@ -61,11 +53,7 @@ class DatabaseHelper {
   Future<void> _removeAll() async {
     LoggerService.instance.debug('Started removeAll to the db');
     await DatabasePageTable.removeALL();
-    await DatabaseContentTable.removeALL();
-    await DatabaseEventTable.removeALL();
     await DatabaseTopicTable.removeALL();
-    await DatabaseEventTopicTable.removeALL();
-    await DatabaseEventContentTable.removeALL();
     await DatabasePuzzlePieceTable.removeALL();
     await DatabaseSpotTable.removeALL();
     LoggerService.instance.debug('Finished removeAll to the db');

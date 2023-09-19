@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ciencia_spots/pages/auth/register/registration_error.dart';
 import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccountRegisterForm extends StatefulWidget {
   const AccountRegisterForm({
     Key? key,
     required this.userNameController,
-    required this.nameController,
-    required this.lastNameController,
-    required this.emailController,
+    // required this.nameController,
+    // required this.lastNameController,
+    // required this.emailController,
     required this.passwordController,
     required this.passwordConfirmationController,
     required this.formKey,
@@ -17,9 +17,9 @@ class AccountRegisterForm extends StatefulWidget {
   }) : super(key: key);
 
   final TextEditingController userNameController;
-  final TextEditingController nameController;
-  final TextEditingController lastNameController;
-  final TextEditingController emailController;
+  // final TextEditingController nameController;
+  // final TextEditingController lastNameController;
+  // final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController passwordConfirmationController;
   final GlobalKey<FormState> formKey;
@@ -67,57 +67,57 @@ class _AccountRegisterFormState extends State<AccountRegisterForm> {
           return null;
         },
       ),
-      TextFormField(
-        autovalidateMode: autovalidateMode,
-        controller: widget.nameController,
-        textAlignVertical: TextAlignVertical.top,
-        textInputAction: TextInputAction.next,
-        decoration: IscteTheme.buildInputDecoration(
-            hint: AppLocalizations.of(context)!.registrationName),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return AppLocalizations.of(context)!.loginNoTextError;
-          }
-          return null;
-        },
-      ),
-      TextFormField(
-        autovalidateMode: autovalidateMode,
-        controller: widget.lastNameController,
-        textAlignVertical: TextAlignVertical.top,
-        textInputAction: TextInputAction.next,
-        decoration: IscteTheme.buildInputDecoration(
-            hint: AppLocalizations.of(context)!.registrationLastName),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return AppLocalizations.of(context)!.loginNoTextError;
-          }
-          return null;
-        },
-      ),
-      TextFormField(
-        autovalidateMode: autovalidateMode,
-        controller: widget.emailController,
-        textAlignVertical: TextAlignVertical.top,
-        textInputAction: TextInputAction.next,
-        decoration: IscteTheme.buildInputDecoration(
-            hint: AppLocalizations.of(context)!.registrationEmail,
-            errorText: (widget.errorCode == RegistrationError.existingEmail)
-                ? AppLocalizations.of(context)!
-                    .registrationEmailAlreadyExistsError
-                : null),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return AppLocalizations.of(context)!.loginNoTextError;
-          } else if (!RegExp(r"\S+[@]\S+\.\S+").hasMatch(value) ||
-              widget.errorCode == RegistrationError.invalidEmail) {
-            //RegExp Explanation (checks for @ followed by any number of non whitespace character followed by a dot "." and then followed by any number of non whitespace characters)
-            //https://regex101.com/r/TZDJmb/1
-            return AppLocalizations.of(context)!.loginNoTextError;
-          }
-          return null;
-        },
-      ),
+      // TextFormField(
+      //   autovalidateMode: autovalidateMode,
+      //   controller: widget.nameController,
+      //   textAlignVertical: TextAlignVertical.top,
+      //   textInputAction: TextInputAction.next,
+      //   decoration: IscteTheme.buildInputDecoration(
+      //       hint: AppLocalizations.of(context)!.registrationName),
+      //   validator: (value) {
+      //     if (value == null || value.isEmpty) {
+      //       return AppLocalizations.of(context)!.loginNoTextError;
+      //     }
+      //     return null;
+      //   },
+      // ),
+      // TextFormField(
+      //   autovalidateMode: autovalidateMode,
+      //   controller: widget.lastNameController,
+      //   textAlignVertical: TextAlignVertical.top,
+      //   textInputAction: TextInputAction.next,
+      //   decoration: IscteTheme.buildInputDecoration(
+      //       hint: AppLocalizations.of(context)!.registrationLastName),
+      //   validator: (value) {
+      //     if (value == null || value.isEmpty) {
+      //       return AppLocalizations.of(context)!.loginNoTextError;
+      //     }
+      //     return null;
+      //   },
+      // ),
+      // TextFormField(
+      //   autovalidateMode: autovalidateMode,
+      //   controller: widget.emailController,
+      //   textAlignVertical: TextAlignVertical.top,
+      //   textInputAction: TextInputAction.next,
+      //   decoration: IscteTheme.buildInputDecoration(
+      //       hint: AppLocalizations.of(context)!.registrationEmail,
+      //       errorText: (widget.errorCode == RegistrationError.existingEmail)
+      //           ? AppLocalizations.of(context)!
+      //               .registrationEmailAlreadyExistsError
+      //           : null),
+      //   validator: (value) {
+      //     if (value == null || value.isEmpty) {
+      //       return AppLocalizations.of(context)!.loginNoTextError;
+      //     } else if (!RegExp(r"\S+[@]\S+\.\S+").hasMatch(value) ||
+      //         widget.errorCode == RegistrationError.invalidEmail) {
+      //       //RegExp Explanation (checks for @ followed by any number of non whitespace character followed by a dot "." and then followed by any number of non whitespace characters)
+      //       //https://regex101.com/r/TZDJmb/1
+      //       return AppLocalizations.of(context)!.loginNoTextError;
+      //     }
+      //     return null;
+      //   },
+      // ),
       TextFormField(
         autovalidateMode: autovalidateMode,
         controller: widget.passwordController,

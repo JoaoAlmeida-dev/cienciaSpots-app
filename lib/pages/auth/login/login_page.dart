@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ciencia_spots/models/auth/login_form_result.dart';
 import 'package:ciencia_spots/services/auth/login_service.dart';
 import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
 import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 bool DONTHAVEACCOUNT = false;
 bool LOGINBUTTON = true;
@@ -68,7 +68,7 @@ class _LoginOpendayState extends State<LoginPage>
       child: _isLoading
           ? const DynamicLoadingWidget()
           : Padding(
-              padding: const EdgeInsets.only(bottom: 10, left: 15, right: 15),
+              padding: const EdgeInsets.all(10),
               child: Form(
                 key: _loginFormkey,
                 child: Column(
@@ -113,16 +113,18 @@ class _LoginOpendayState extends State<LoginPage>
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Text("Não és um admin?"),
+                          Text(AppLocalizations.of(context)!
+                              .loginAlreadyHaveAccount),
                           DynamicTextButton(
-                            onPressed: widget.changeToAuthInitial,
+                            onPressed: widget.changeToSignUp,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(Icons.adaptive.arrow_back),
                                 Text(
-                                  AppLocalizations.of(context)!.back,
-                                )
+                                  AppLocalizations.of(context)!
+                                      .loginRegisterButton,
+                                ),
+                                Icon(Icons.adaptive.arrow_forward),
                               ],
                             ),
                           )

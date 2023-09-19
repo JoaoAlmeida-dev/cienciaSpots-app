@@ -1,7 +1,3 @@
-import 'package:confetti/confetti.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ciencia_spots/models/database/tables/database_spot_table.dart';
 import 'package:ciencia_spots/models/spot.dart';
 import 'package:ciencia_spots/pages/home/nav_drawer/drawer.dart';
@@ -22,6 +18,10 @@ import 'package:ciencia_spots/widgets/my_app_bar.dart';
 import 'package:ciencia_spots/widgets/my_bottom_bar.dart';
 import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 import 'package:ciencia_spots/widgets/util/overlays.dart';
+import 'package:confetti/confetti.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../widgets/dynamic_widgets/dynamic_progress_indicator.dart';
 import '../timeline/feedback_form.dart';
@@ -98,6 +98,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _tabController.animateTo(widget.puzzleIndex);
   }
 
+  void navigatetoScan() {
+    _tabController.animateTo(widget.scanSpotIndex);
+  }
+
   completePuzzleCallback() async {
     LoggerService.instance.debug("Completed Puzzle!!");
     _confettiController.play();
@@ -131,7 +135,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         DynamicTextButton(
           onPressed: () {
-            navigateBackToPuzzle();
+            navigatetoScan();
             Navigator.of(context).pop();
           },
           style: const ButtonStyle(

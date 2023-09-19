@@ -1,23 +1,20 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ciencia_spots/models/quiz/trial.dart';
 import 'package:ciencia_spots/models/timeline/topic.dart';
 import 'package:ciencia_spots/pages/quiz/quiz_page.dart';
 import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
-import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
 import 'package:ciencia_spots/widgets/my_app_bar.dart';
 import 'package:ciencia_spots/widgets/network/error.dart';
 import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../models/quiz/quiz.dart';
-import '../../models/timeline/timeline_filter_params.dart';
 import '../../services/quiz/quiz_service.dart';
 import '../../widgets/dialogs/custom_dialogs.dart';
-import '../home/scanPage/timeline_study_quiz_page.dart';
 
 //const API_ADDRESS = "http://192.168.1.124";
 
@@ -367,21 +364,6 @@ class QuizDetail extends StatelessWidget {
                 runSpacing: 20,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  DynamicTextButton(
-                    child: Text(AppLocalizations.of(context)!.quizStudyForQuiz),
-                    onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => TimelineStudyForQuiz.fromFilter(
-                          filterParams: TimelineFilterParams(
-                            topics: quiz.topics
-                                .map((Topic e) =>
-                                    Topic(id: e.id, title: e.title))
-                                .toSet(),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                   ElevatedButton(
                     onPressed: () {
                       showYesNoWarningDialog(
