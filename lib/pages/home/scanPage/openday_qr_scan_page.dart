@@ -1,6 +1,7 @@
 import 'package:ciencia_spots/models/requests/spot_info_request.dart';
 import 'package:ciencia_spots/pages/home/scanPage/qr_scan_camera_controls.dart';
 import 'package:ciencia_spots/pages/home/scanPage/scanner_overlay_painter.dart';
+import 'package:ciencia_spots/pages/quiz/quiz_list_menu.dart';
 import 'package:ciencia_spots/services/auth/exceptions.dart';
 import 'package:ciencia_spots/services/auth/login_service.dart';
 import 'package:ciencia_spots/services/logging/LoggerService.dart';
@@ -18,12 +19,8 @@ class QRScanPageOpenDay extends StatefulWidget {
   const QRScanPageOpenDay({
     Key? key,
     required this.navigateBackToPuzzleCallback,
-    //required this.changeImage,
-    //required this.completedAllPuzzle,
   }) : super(key: key);
 
-  //final void Function(Future<SpotRequest> request) changeImage;
-  //final void Function() completedAllPuzzle;
   final void Function() navigateBackToPuzzleCallback;
 
   @override
@@ -169,48 +166,6 @@ class QRScanPageOpenDayState extends State<QRScanPageOpenDay> {
           spotInfoRequest,
         );
       }
-      LoggerService.instance.debug("continueScan: $continueScan");
-
-      // if (continueScan) {
-      //   List<Spot> spots =
-      //       (await DatabaseSpotTable.getAllWithIds([spotInfoRequest.id]));
-      //   if (spots.isNotEmpty) {
-      //     Spot spot = spots.first;
-      //     if (!spot.visited) {
-      //       spot.visited = true;
-      //       await DatabaseSpotTable.update(spot);
-      //     }
-      //   }
-      //   if (mounted) {
-      //     TopicRequest topicRequestCompleted = await QRScanService.topicRequest(
-      //         context: context, topicID: spotInfoRequest.id);
-      //
-      //     LoggerService.instance
-      //         .debug("spotInfoRequest: $topicRequestCompleted");
-      //   }
-      //
-      //   if (!mounted) return;
-      //
-      //   Navigator.of(context).pushNamed(
-      //     TimelineStudyForQuiz.pageRoute,
-      //     arguments: spotInfoRequest,
-      //   );
-      //   widget.navigateBackToPuzzleCallback();
-      //
-      //   if (!mounted) return;
-      //   await DynamicAlertDialog.showDynamicDialog(
-      //     icon: Icon(Icons.timeline, size: DynamicAlertDialog.iconSize),
-      //     context: context,
-      //     title: Text(
-      //       AppLocalizations.of(context)!
-      //           .qrScanResultExplanationDialogTitle(spotInfoRequest.title),
-      //     ),
-      //     content: Text(
-      //       AppLocalizations.of(context)!
-      //           .qrScanResultExplanationDialogContent(spotInfoRequest.title),
-      //     ),
-      //   );
-      // }
     } on LoginException {
       LoggerService.instance.error("LoginException");
       if (mounted) {
@@ -254,30 +209,17 @@ class QRScanPageOpenDayState extends State<QRScanPageOpenDay> {
         actions: [
           DynamicTextButton(
             child: Text(
-              AppLocalizations.of(context)!.qrScanConfirmationCancel,
+              AppLocalizations.of(context)!.qrScanResultReadyForQuizButton,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
                   ?.copyWith(color: IscteTheme.iscteColor),
             ),
-            onPressed: () {
-              LoggerService.instance.debug("Pressed \"CANCEL\"");
-              continueScan = false;
-              Navigator.pop(context);
-            },
-          ),
-          DynamicTextButton(
-            child: Text(
-              AppLocalizations.of(context)!.qrScanConfirmationAccept,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: IscteTheme.iscteColor),
-            ),
-            onPressed: () {
+            onPressed: () async {
               LoggerService.instance.debug("Pressed \"ACCEPT\"");
-              continueScan = true;
               Navigator.pop(context);
+              await Navigator.pushNamed(context, QuizMenu.pageRoute);
+              widget.navigateBackToPuzzleCallback();
             },
           )
         ]);

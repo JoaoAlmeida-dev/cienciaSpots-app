@@ -78,26 +78,6 @@ class _RegisterPageState extends State<RegisterPage>
     }
   }
 
-  // StepState _stepState(int step) {
-  //   if (step == 0 &&
-  //       (errorCode == RegistrationError.passwordNotMatch ||
-  //           errorCode == RegistrationError.existingEmail ||
-  //           errorCode == RegistrationError.existingUsername ||
-  //           errorCode == RegistrationError.invalidEmail)) {
-  //     return StepState.error;
-  //   } else if (step == 1 && errorCode == RegistrationError.invalidAffiliation) {
-  //     return StepState.error;
-  //   } else if (_curentStep == step) {
-  //     return StepState.editing;
-  //   } else {
-  //     if (_curentStep > step) {
-  //       return StepState.complete;
-  //     } else {
-  //       return StepState.indexed;
-  //     }
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -134,9 +114,6 @@ class _RegisterPageState extends State<RegisterPage>
                             errorCode: errorCode,
                             formKey: _accountFormkey,
                             userNameController: userNameController,
-                            // nameController: nameController,
-                            // lastNameController: lastNameController,
-                            // emailController: emailController,
                             passwordController: passwordController,
                             passwordConfirmationController:
                                 passwordConfirmationController,
@@ -175,37 +152,6 @@ class _RegisterPageState extends State<RegisterPage>
       ),
     );
   }
-
-  // List<Step> getSteps() {
-  //   return [
-  //     // Step(
-  //     //   state: _stepState(0),
-  //     //   isActive: _curentStep >= 0,
-  //     //   title: Text(AppLocalizations.of(context)!.registrationAccountStep),
-  //     //   content: AccountRegisterForm(
-  //     //     errorCode: errorCode,
-  //     //     formKey: _accountFormkey,
-  //     //     userNameController: userNameController,
-  //     //     nameController: nameController,
-  //     //     lastNameController: lastNameController,
-  //     //     emailController: emailController,
-  //     //     passwordController: passwordController,
-  //     //     passwordConfirmationController: passwordConfirmationController,
-  //     //   ),
-  //     // ),
-  //     Step(
-  //       state: _stepState(1),
-  //       isActive: _curentStep >= 1,
-  //       title: Text(AppLocalizations.of(context)!.registrationSchoolStep),
-  //       content: SchoolRegisterForm(
-  //         errorCode: errorCode,
-  //         formKey: _schoolFormkey,
-  //         chosenAffiliationType: chosenaffiliationType,
-  //         chosenAffiliationName: chosenAffiliationName,
-  //       ),
-  //     ),
-  //   ];
-  // }
 }
 
 class CompleteForm extends StatelessWidget {

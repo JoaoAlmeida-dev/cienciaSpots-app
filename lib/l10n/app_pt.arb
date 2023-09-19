@@ -124,10 +124,6 @@
     "qrScanResultExplanationDialogTitle": "Aqui podes estudar os conteúdos e eventos relativos a {topic}",
     "qrScanResultExplanationDialogContent": "Perguntas sobre estes conteúdos vão estar presentes no teu próximo quiz portanto estuda-os bem.\nPara os estudares outra vez no futuro, podes visitar a página da Cronologia dos 50 anos e filtrar pelo tópico: {topic}.",
     "qrScanResultReadyForQuizButton": "Estás pronto para o quiz?",
-    "qrScanResultReadyForQuizButtonDialogTitle": "Já estudaste os conteúdos todos?",
-    "qrScanResultReadyForQuizButtonDialogContent": "Se achares que estás apto para o desafio clica no botão abaixo e começa a responder.",
-    "qrScanResultReadyForQuizButtonDialogContinueButton": "Vamos a isso",
-    "qrScanResultReadyForQuizButtonDialogCancelButton": "Não estou preparado",
     "qrScanQuizLevelNotAchievedErrorAlertDialogTitle":"Erro no scan",
     "qrScanQuizLevelNotAchievedErrorAlertDialogContent":"Tens de responder ao teu último quiz para continuar com o scan de um novo Spot.",
 
