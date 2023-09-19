@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ciencia_spots/helper/constants.dart';
 import 'package:ciencia_spots/pages/profile/placeholder.dart';
 import 'package:ciencia_spots/services/auth/auth_storage_service.dart';
 import 'package:ciencia_spots/services/logging/LoggerService.dart';
 import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
 import 'package:ciencia_spots/widgets/my_app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 const API_ADDRESS = BackEndConstants.API_ADDRESS;
@@ -131,10 +131,6 @@ class _ProfileState extends State<Profile> {
                         Text(profile["name"],
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 23)),
-                        const SizedBox(height: 20),
-                        Text(profile["affiliation_name"].toString(),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(fontSize: 13)),
                         const SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

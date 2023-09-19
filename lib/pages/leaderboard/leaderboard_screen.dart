@@ -1,18 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:ciencia_spots/services/leaderboard/leaderboard_service.dart';
+import 'package:ciencia_spots/widgets/network/error.dart';
+import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:ciencia_spots/helper/constants.dart';
-import 'package:ciencia_spots/services/auth/auth_storage_service.dart';
-import 'package:ciencia_spots/services/leaderboard/leaderboard_service.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
-import 'package:ciencia_spots/widgets/network/error.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
 
 //const API_ADDRESS = "http://192.168.1.124";
 
@@ -60,7 +56,6 @@ class _LeaderBoardPageState extends State<LeaderBoardPage>
 
   static const List<Widget> _pages = <Widget>[
     GlobalLeaderboard(),
-    AffiliationLeaderboard(),
     RelativeLeaderboard(),
   ];
 
@@ -82,7 +77,7 @@ class _LeaderBoardPageState extends State<LeaderBoardPage>
   void initState() {
     super.initState();
     loadAffiliationData();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: _pages.length, vsync: this);
   }
 
   @override
@@ -140,11 +135,6 @@ class _LeaderBoardPageState extends State<LeaderBoardPage>
               label: AppLocalizations.of(context)!.leaderboardGlobal,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.group),
-              backgroundColor: Theme.of(context).primaryColor,
-              label: AppLocalizations.of(context)!.leaderboardAffiliation,
-            ),
-            BottomNavigationBarItem(
               icon: const Icon(Icons.location_on),
               backgroundColor: Theme.of(context).primaryColor,
               label: AppLocalizations.of(context)!.leaderboardNearMe,
@@ -152,247 +142,6 @@ class _LeaderBoardPageState extends State<LeaderBoardPage>
           ],
         ),
       ),
-    );
-  }
-}
-
-class AffiliationLeaderboard extends StatefulWidget {
-  const AffiliationLeaderboard({Key? key}) : super(key: key);
-
-  @override
-  AffiliationLeaderboardState createState() => AffiliationLeaderboardState();
-}
-
-class AffiliationLeaderboardState extends State<AffiliationLeaderboard>
-    with AutomaticKeepAliveClientMixin {
-  String selectedType = "-";
-  String selectedAffiliation = "-";
-  bool firstSearch = false;
-  bool canSearch = false;
-
-  Map<String, dynamic> affiliationMap = {
-    "-": ["-"]
-  };
-  bool readJson = false;
-
-  Future<List<dynamic>> fetchLeaderboard(BuildContext context) async {
-    try {
-      String apiToken = await LoginStorageService.getBackendApiKey();
-
-      HttpClient client = HttpClient();
-      client.badCertificateCallback =
-          ((X509Certificate cert, String host, int port) => true);
-      final request = await client.getUrl(Uri.parse(
-          '${BackEndConstants.API_ADDRESS}/api/users/leaderboard?type=$selectedType&affiliation=$selectedAffiliation'));
-      request.headers.add("Authorization", "Token $apiToken");
-      final response = await request.close();
-      var json = jsonDecode(await response.transform(utf8.decoder).join());
-
-      LoggerService.instance.debug(json);
-      if (response.statusCode == 200) {
-        return json;
-      }
-    } catch (e) {
-      LoggerService.instance.error(e);
-      rethrow;
-    }
-    throw Exception('Failed to load leaderboard');
-  }
-
-  Future<String> loadAffiliationDataFromFile() async {
-    var jsonText =
-        await rootBundle.loadString('Resources/Affiliations/affiliations.json');
-    readJson = true;
-    setState(
-        () => affiliationMap = json.decode(utf8.decode(jsonText.codeUnits)));
-    return 'success';
-  }
-
-  Future<String> fetchAffiliationData() async {
-    try {
-      String? apiToken = await secureStorage.read(key: "backend_api_key");
-
-      HttpClient client = HttpClient();
-      client.badCertificateCallback =
-          ((X509Certificate cert, String host, int port) => true);
-      final request = await client.getUrl(
-          Uri.parse('${BackEndConstants.API_ADDRESS}/api/users/affiliations'));
-      request.headers.add("Authorization", "Token $apiToken");
-      final response = await request.close();
-
-      if (response.statusCode == 200) {
-        affiliationMap =
-            jsonDecode(await response.transform(utf8.decoder).join());
-        setState(() {});
-        return "success";
-      }
-    } catch (e) {
-      LoggerService.instance.debug(e);
-    }
-    return "fail";
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fetchAffiliationData();
-    //loadAffiliationDataFromFile();
-    setState(() {});
-  }
-
-  @override
-  bool get wantKeepAlive => true;
-
-  @override
-  Widget build(BuildContext context) {
-    super.build(context);
-    return Column(
-      children: [
-        SizedBox(
-          // Container to hold the description
-          height: 50,
-          child: Center(
-            child: Text(
-                AppLocalizations.of(context)!.leaderboardAffiliationTitle,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const SizedBox(width: 15),
-            Flexible(
-              flex: 1,
-              child: Column(
-                children: [
-                  Text(AppLocalizations.of(context)!.leaderboardAffiliation),
-                  DropdownButton(
-                    isExpanded: true,
-                    value: selectedType,
-                    items: (affiliationMap.keys.toList())
-                        .map(
-                          (type) => DropdownMenuItem<String>(
-                              value: type,
-                              child: Text(
-                                  type == "*"
-                                      ? AppLocalizations.of(context)!
-                                          .leaderboardAffiliationAllDropdown
-                                      : type == "-"
-                                          ? AppLocalizations.of(context)!
-                                              .leaderboardAffiliationNoneDropdown
-                                          : type,
-                                  style: const TextStyle(fontSize: 13))),
-                        )
-                        .toList(),
-                    selectedItemBuilder: (BuildContext context) {
-                      return affiliationMap.keys.toList().map((type) {
-                        return Center(
-                          child: SizedBox(
-                              width: double.maxFinite,
-                              child: Text(
-                                  type == "*"
-                                      ? AppLocalizations.of(context)!
-                                          .leaderboardAffiliationAllDropdown
-                                      : type == "-"
-                                          ? AppLocalizations.of(context)!
-                                              .leaderboardAffiliationNoneDropdown
-                                          : type,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(fontSize: 13))),
-                        );
-                      }).toList();
-                    },
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        canSearch = false;
-                        selectedType = newValue!;
-                        selectedAffiliation = "-";
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 15),
-            Flexible(
-              flex: 1,
-              child: Column(
-                children: [
-                  Text(AppLocalizations.of(context)!
-                      .leaderboardAffiliationDepartment),
-                  DropdownButton(
-                    isExpanded: true,
-                    value: selectedAffiliation,
-                    items: (affiliationMap[selectedType])
-                        .map<DropdownMenuItem<String>>(
-                          (aff) => DropdownMenuItem<String>(
-                              value: aff,
-                              child: Text(
-                                  aff == "*"
-                                      ? AppLocalizations.of(context)!
-                                          .leaderboardDepartmentAllDropdown
-                                      : aff == "-"
-                                          ? AppLocalizations.of(context)!
-                                              .leaderboardDepartmentNoneDropdown
-                                          : aff,
-                                  style: const TextStyle(fontSize: 13))),
-                        )
-                        .toList(),
-                    selectedItemBuilder: (BuildContext context) {
-                      return (affiliationMap[selectedType] as List<dynamic>)
-                          .map((aff) {
-                        return Center(
-                          child: Text(
-                              aff == "*"
-                                  ? AppLocalizations.of(context)!
-                                      .leaderboardDepartmentAllDropdown
-                                  : aff == "-"
-                                      ? AppLocalizations.of(context)!
-                                          .leaderboardDepartmentNoneDropdown
-                                      : aff,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(fontSize: 13)),
-                        );
-                      }).toList();
-                    },
-                    onChanged: (selectedType == "-")
-                        ? null
-                        : (String? newValue) {
-                            if (newValue != "-") {
-                              setState(() {
-                                canSearch = true;
-                                firstSearch = true;
-                                selectedAffiliation = newValue!;
-                              });
-                            }
-                          },
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 20),
-          ],
-        ),
-        if (canSearch)
-          Expanded(
-              child: LeaderboardList(
-            key: UniqueKey(),
-            fetchFunction: fetchLeaderboard,
-            showRank: true,
-          ))
-        else if (!firstSearch && readJson)
-          Expanded(
-            child: Center(
-              child: Text(
-                AppLocalizations.of(context)!.leaderboardAffiliationSelect,
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
-          ),
-      ],
     );
   }
 }
@@ -512,9 +261,7 @@ class LeaderboardListState extends State<LeaderboardList> {
                                             ? IscteTheme.iscteColor
                                             : null)),
                             subtitle: Text(
-                              "${AppLocalizations.of(context)!.leaderboardPoints}: ${items[index]["points"]} "
-                              "\n${AppLocalizations.of(context)!.leaderboardAffiliation}: ${items[index]["affiliation_name"]}",
-                            ),
+                                "${AppLocalizations.of(context)!.leaderboardPoints}: ${items[index]["points"]} "),
                             minVerticalPadding: 10.0,
                             trailing: widget.showRank
                                 ? Row(
