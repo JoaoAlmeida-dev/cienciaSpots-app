@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:ciencia_spots/helper/box_size.dart';
+import 'package:iscte_spots/helper/box_size.dart';
 import 'package:motion_sensors/motion_sensors.dart';
 
 class MovingPiece extends StatefulWidget {

@@ -1,4 +1,4 @@
-package iscte.scienceSpots
+package iscte.isctespots
 
 import io.flutter.embedding.android.FlutterActivity
 

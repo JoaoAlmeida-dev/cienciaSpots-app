@@ -1,6 +1,6 @@
-import 'package:ciencia_spots/models/database/database_helper.dart';
-import 'package:ciencia_spots/models/spot.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/models/database/database_helper.dart';
+import 'package:iscte_spots/models/spot.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseSpotTable {

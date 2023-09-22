@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:ciencia_spots/models/quiz/trial.dart';
-import 'package:ciencia_spots/models/timeline/topic.dart';
-import 'package:ciencia_spots/pages/quiz/quiz_page.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
-import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
-import 'package:ciencia_spots/widgets/my_app_bar.dart';
-import 'package:ciencia_spots/widgets/network/error.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:iscte_spots/models/quiz/trial.dart';
+import 'package:iscte_spots/models/timeline/topic.dart';
+import 'package:iscte_spots/pages/quiz/quiz_page.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
+import 'package:iscte_spots/widgets/my_app_bar.dart';
+import 'package:iscte_spots/widgets/network/error.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';

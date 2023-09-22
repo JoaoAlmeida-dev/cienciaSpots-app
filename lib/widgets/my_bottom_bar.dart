@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ciencia_spots/services/platform_service.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:iscte_spots/services/platform_service.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 
 class MyBottomBar extends StatefulWidget {
   final TabController tabController;

@@ -1,14 +1,14 @@
 /*
 import 'package:flutter/services.dart';
 
-import 'package:ciencia_spots/models/database/tables/database_content_table.dart';
-import 'package:ciencia_spots/models/database/tables/database_event_content_table.dart';
-import 'package:ciencia_spots/models/database/tables/database_event_table.dart';
-import 'package:ciencia_spots/models/database/tables/database_event_topic_table.dart';
-import 'package:ciencia_spots/models/database/tables/database_topic_table.dart';
-import 'package:ciencia_spots/models/timeline/content.dart';
-import 'package:ciencia_spots/models/timeline/event.dart';
-import 'package:ciencia_spots/models/timeline/topic.dart';
+import 'package:iscte_spots/models/database/tables/database_content_table.dart';
+import 'package:iscte_spots/models/database/tables/database_event_content_table.dart';
+import 'package:iscte_spots/models/database/tables/database_event_table.dart';
+import 'package:iscte_spots/models/database/tables/database_event_topic_table.dart';
+import 'package:iscte_spots/models/database/tables/database_topic_table.dart';
+import 'package:iscte_spots/models/timeline/content.dart';
+import 'package:iscte_spots/models/timeline/event.dart';
+import 'package:iscte_spots/models/timeline/topic.dart';
 import 'package:logger/logger.dart';
 
 class TimelineCSVService {

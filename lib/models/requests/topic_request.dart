@@ -1,4 +1,4 @@
-// import 'package:ciencia_spots/models/timeline/content.dart';
+// import 'package:iscte_spots/models/timeline/content.dart';
 
 class TopicRequest {
   TopicRequest({

@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:ciencia_spots/pages/auth/auth_page.dart';
-import 'package:ciencia_spots/pages/home/home_page.dart';
-import 'package:ciencia_spots/pages/home/splashScreen/shake.dart';
-import 'package:ciencia_spots/pages/onboarding/onboarding_page.dart';
-import 'package:ciencia_spots/services/auth/login_service.dart';
-import 'package:ciencia_spots/services/onboard_service.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:iscte_spots/pages/auth/auth_page.dart';
+import 'package:iscte_spots/pages/home/home_page.dart';
+import 'package:iscte_spots/pages/home/splashScreen/shake.dart';
+import 'package:iscte_spots/pages/onboarding/onboarding_page.dart';
+import 'package:iscte_spots/services/auth/login_service.dart';
+import 'package:iscte_spots/services/onboard_service.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
-import 'package:ciencia_spots/models/database/tables/database_spot_table.dart';
-import 'package:ciencia_spots/models/spot.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/models/database/tables/database_spot_table.dart';
+import 'package:iscte_spots/models/spot.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:ciencia_spots/pages/auth/login/login_page.dart';
-import 'package:ciencia_spots/pages/auth/register/register_page.dart';
-import 'package:ciencia_spots/pages/home/home_page.dart';
-import 'package:ciencia_spots/services/auth/fenix_login_service.dart';
-import 'package:ciencia_spots/services/auth/login_service.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
-import 'package:ciencia_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
+import 'package:iscte_spots/pages/auth/login/login_page.dart';
+import 'package:iscte_spots/pages/auth/register/register_page.dart';
+import 'package:iscte_spots/pages/home/home_page.dart';
+import 'package:iscte_spots/services/auth/fenix_login_service.dart';
+import 'package:iscte_spots/services/auth/login_service.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

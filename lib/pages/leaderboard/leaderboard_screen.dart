@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:ciencia_spots/services/leaderboard/leaderboard_service.dart';
-import 'package:ciencia_spots/widgets/network/error.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:iscte_spots/services/leaderboard/leaderboard_service.dart';
+import 'package:iscte_spots/widgets/network/error.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

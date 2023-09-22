@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:ciencia_spots/helper/constants.dart';
-import 'package:ciencia_spots/models/timeline/topic.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/helper/constants.dart';
+import 'package:iscte_spots/models/timeline/topic.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:http/http.dart' as http;
 
 class TimelineTopicService {

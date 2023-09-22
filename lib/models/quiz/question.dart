@@ -1,4 +1,4 @@
-import 'package:ciencia_spots/models/quiz/answer.dart';
+import 'package:iscte_spots/models/quiz/answer.dart';
 
 enum QuestionType {
   singular,

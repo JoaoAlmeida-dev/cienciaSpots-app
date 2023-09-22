@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 
 import 'getstarted_onboard_button.dart';
 import 'next_onboard_button.dart';

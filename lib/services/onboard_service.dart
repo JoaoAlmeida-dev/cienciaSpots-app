@@ -1,4 +1,4 @@
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboadingService {

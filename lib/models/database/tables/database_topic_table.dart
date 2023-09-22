@@ -1,4 +1,4 @@
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../timeline/topic.dart';

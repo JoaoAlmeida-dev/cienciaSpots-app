@@ -1,6 +1,6 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 
 class IscteConfetti extends StatelessWidget {
   const IscteConfetti({

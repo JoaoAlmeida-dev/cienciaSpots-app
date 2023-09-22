@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:ciencia_spots/models/spot.dart';
-import 'package:ciencia_spots/pages/home/puzzle/clipped_piece_widget.dart';
-import 'package:ciencia_spots/pages/home/puzzle/puzzle_piece_widget.dart';
-import 'package:ciencia_spots/pages/home/splashScreen/moving_widget.dart';
+import 'package:iscte_spots/models/spot.dart';
+import 'package:iscte_spots/pages/home/puzzle/clipped_piece_widget.dart';
+import 'package:iscte_spots/pages/home/puzzle/puzzle_piece_widget.dart';
+import 'package:iscte_spots/pages/home/splashScreen/moving_widget.dart';
 
 import 'box_size.dart';
 

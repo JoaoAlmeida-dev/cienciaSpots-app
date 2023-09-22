@@ -1,5 +1,5 @@
-import 'package:ciencia_spots/models/quiz/trial.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/models/quiz/trial.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 class TrialController {
   final Trial trial;

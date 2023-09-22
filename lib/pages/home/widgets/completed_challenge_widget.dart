@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:lottie/lottie.dart';
 
 class CompletedChallengeWidget extends StatefulWidget {

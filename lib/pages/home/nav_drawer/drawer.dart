@@ -1,8 +1,8 @@
-import 'package:ciencia_spots/pages/onboarding/onboarding_page.dart';
-import 'package:ciencia_spots/pages/profile/profile_screen.dart';
-import 'package:ciencia_spots/pages/quiz/quiz_list_menu.dart';
-import 'package:ciencia_spots/pages/spotChooser/spot_chooser_page.dart';
-import 'package:ciencia_spots/services/auth/login_service.dart';
+import 'package:iscte_spots/pages/onboarding/onboarding_page.dart';
+import 'package:iscte_spots/pages/profile/profile_screen.dart';
+import 'package:iscte_spots/pages/quiz/quiz_list_menu.dart';
+import 'package:iscte_spots/pages/spotChooser/spot_chooser_page.dart';
+import 'package:iscte_spots/services/auth/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:ciencia_spots/services/flickr/flickr_service.dart';
-import 'package:ciencia_spots/services/logging/LoggerService.dart';
+import 'package:iscte_spots/services/flickr/flickr_service.dart';
+import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:http/http.dart' as http;
 
 class FlickrIsctePhotoService extends FlickrService {

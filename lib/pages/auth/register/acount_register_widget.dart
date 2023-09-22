@@ -1,5 +1,5 @@
-import 'package:ciencia_spots/pages/auth/register/registration_error.dart';
-import 'package:ciencia_spots/widgets/util/iscte_theme.dart';
+import 'package:iscte_spots/pages/auth/register/registration_error.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:ciencia_spots/models/database/tables/database_puzzle_piece_table.dart';
-import 'package:ciencia_spots/models/puzzle_piece.dart';
-import 'package:ciencia_spots/models/spot.dart';
+import 'package:iscte_spots/models/database/tables/database_puzzle_piece_table.dart';
+import 'package:iscte_spots/models/puzzle_piece.dart';
+import 'package:iscte_spots/models/spot.dart';
 
 import '../state/puzzle_state.dart';
 import 'clipped_piece_widget.dart';

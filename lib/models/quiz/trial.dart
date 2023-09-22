@@ -1,4 +1,4 @@
-import 'package:ciencia_spots/models/quiz/question.dart';
+import 'package:iscte_spots/models/quiz/question.dart';
 
 class Trial {
   ///Number of the trial
