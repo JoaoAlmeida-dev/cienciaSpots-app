@@ -121,7 +121,7 @@ class _ProfileState extends State<Profile> {
                                 radius: 40,
                                 child: FittedBox(
                                     fit: BoxFit.fill,
-                                    child: Text(profile["initials"],
+                                    child: Text(profile["name"][0].toString().toUpperCase(),
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 40))))),
@@ -169,28 +169,16 @@ class _ProfileState extends State<Profile> {
                             )),
                         const SizedBox(height: 10),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [
-                                const Text("Global",
-                                    style: TextStyle(fontSize: 14)),
-                                Text("#" + profile["ranking"].toString(),
+                                Text("#${profile["ranking"]}",
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 18)),
+                                        fontSize: 22)),
                               ],
                             ),
-                            Column(
-                              children: [
-                                const Text("Afiliação",
-                                    style: TextStyle(fontSize: 14)),
-                                Text("#${profile["affiliation_ranking"]}",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18)),
-                              ],
-                            )
                           ],
                         ),
                         const Divider(
@@ -201,37 +189,6 @@ class _ProfileState extends State<Profile> {
                         ),
                       ],
                     )),
-                    /*const SizedBox(height: 15),
-                  const Text("Estatísticas", style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18
-                  )),
-                  const SizedBox(height: 15),
-
-                  const Text("Número de Spots lidos"),
-                  const Text("4", style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
-                  const SizedBox(height: 10),
-
-                  const Text("Tempo médio de descoberta de Spots"),
-                  const Text("20:35", style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
-                  const SizedBox(height: 10),
-
-                  const Text("Estatística Random"),
-                  const Text("Torradas Mistas", style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
-                  const SizedBox(height: 10),
-
-                  const Text("Outra Estatística Random"),
-                  const Text("Tostas Assadas", style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
-                  const SizedBox(height: 10),
-                                            */
                   ],
                 ),
               ),
