@@ -148,10 +148,15 @@ class _OnboardingPageState extends State<OnboardingPage>
           textScaleFactor: 2,
           style: const TextStyle(color: Colors.white),
         ),
-        center: Image.asset(
-          "Resources/Img/Nei/nei_principal_logo.png",
-          errorBuilder: _lottieErrorBuilder,
+        center: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Image.asset(
+            "Resources/Img/Nei/nei_principal_logo.png",
+            errorBuilder: _lottieErrorBuilder,
+          ),
         ),
+
+
         bottom: Text(
           AppLocalizations.of(context)!.onboardingText2,
           textScaleFactor: 1.5,

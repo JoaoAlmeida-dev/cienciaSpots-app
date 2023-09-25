@@ -85,7 +85,7 @@
     "opendayonboardingText1" : "Use the Credentials given to you by our staff so you can participate in the game using the app.",
     "onboardingText1" : "Use the credentials you usually use for accessing fenix so you can participate in the game using the app.",
     "onboardingTitle2" : "The ScienceSpots game",
-    "onboardingText2" : "In order to get to know the science behind the Researchers Night we set up this game.\nMaybe you will find some interestng places... or will you focus on competing for the first place in the leaderboards?",
+    "onboardingText2" : "In order to get to know the science behind the Researchers Night we set up this game.\nMaybe you will find some interesting places... or will you reach the first place in the leaderboards?",
     "onboardingTitle3" : "Complete the puzzle",
     "onboardingText3" : "Use the puzzle to understand where the next spot is...",
     "onboardingTitle4" : "Find the spot",
@@ -94,6 +94,8 @@
     "onboardingText5" : "Check how your peers are doing on the Leaderboard.\n You can be faster than them right?",
     "onboardingTitle6" : "Repeat until you win",
     "onboardingText6" : "Now do it again!\nUntil you find all the spots hidden in this European Researchers Night",
+    "onboardingTitleQuiz" : "Complete the Quizzes",
+    "onboardingTextQuiz" : "Each reading of a Spot gives access to a Quiz with questions about the corresponding scientific theme",
 
     "qrScanNotificationLoginError": "Authentication Error",
     "qrScanNotificationConnectionError": "Connection Error",

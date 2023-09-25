@@ -107,7 +107,7 @@ class QuizListState extends State<QuizList> {
   }
 
   Future<void> startTrialCallback({required int quizNumber}) async {
-    isTrialLoading = true;
+    setState(() => isTrialLoading = true);
     try {
       Trial newTrial = await QuizService.startTrial(quizNumber);
       _trialCallbackAux(trial: newTrial, quizNumber: quizNumber);
