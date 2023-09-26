@@ -182,7 +182,7 @@ class QRScanPageOpenDayState extends State<QRScanPageOpenDay> {
 
       TopicRequest topicRequestCompleted = await QRScanService.topicRequest(
           context: context, topicID: spotInfoRequest.id);
-      await Future.delayed(const Duration(seconds: 1));
+      // await Future.delayed(const Duration(seconds: 1));
       if (!mounted) return;
       await Navigator.pushNamed(context, QuizMenu.pageRoute);
       widget.navigateBackToPuzzleCallback();
