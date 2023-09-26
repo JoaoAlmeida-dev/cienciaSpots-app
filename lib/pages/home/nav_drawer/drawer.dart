@@ -16,81 +16,84 @@ class MyNavigationDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextStyle? tileTextStyle = Theme.of(context).textTheme.bodyLarge;
 
-    return Drawer(
-      key: key,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      child: Column(
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("Resources/Img/Logo/logo_50_anos_main.jpg"),
-                  fit: BoxFit.cover),
+    return SafeArea(
+      child: Drawer(
+        key: key,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        child: Column(
+          children: [
+            //const SizedBox(height:10),
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("Resources/Img/Nei/nei_principal_logo.png"),
+                    fit: BoxFit.contain),
+              ),
+              child: null,
             ),
-            child: null,
-          ),
-          Flexible(
-            flex: 2,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                ListTile(
-                    leading: const Icon(OnboardingPage.icon),
-                    title: Text(AppLocalizations.of(context)!.onboardingPage,
+            Flexible(
+              flex: 2,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  ListTile(
+                      leading: const Icon(OnboardingPage.icon),
+                      title: Text(AppLocalizations.of(context)!.onboardingPage,
+                          style: tileTextStyle),
+                      onTap: () {
+                        navigateBackToPuzzleCallback();
+                        Navigator.of(context)
+                            .popAndPushNamed(OnboardingPage.pageRoute);
+                      }),
+                  ListTile(
+                    leading: const Icon(SpotChooserPage.icon),
+                    title: Text(AppLocalizations.of(context)!.spotChooserScreen,
                         style: tileTextStyle),
                     onTap: () {
                       navigateBackToPuzzleCallback();
                       Navigator.of(context)
-                          .popAndPushNamed(OnboardingPage.pageRoute);
-                    }),
-                ListTile(
-                  leading: const Icon(SpotChooserPage.icon),
-                  title: Text(AppLocalizations.of(context)!.spotChooserScreen,
-                      style: tileTextStyle),
-                  onTap: () {
-                    navigateBackToPuzzleCallback();
-                    Navigator.of(context)
-                        .popAndPushNamed(SpotChooserPage.pageRoute);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(QuizMenu.icon),
-                  title: Text(AppLocalizations.of(context)!.quizScreen,
-                      style: tileTextStyle),
-                  onTap: () {
-                    //PageRoutes.animateToPage(context, page: QuizPage());
-                    navigateBackToPuzzleCallback();
-                    Navigator.of(context).popAndPushNamed(QuizMenu.pageRoute);
-                  },
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ListTile(
-                    leading: const Icon(ProfilePage.icon),
-                    title: Text(AppLocalizations.of(context)!.profileScreen,
+                          .popAndPushNamed(SpotChooserPage.pageRoute);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(QuizMenu.icon),
+                    title: Text(AppLocalizations.of(context)!.quizScreen,
                         style: tileTextStyle),
                     onTap: () {
+                      //PageRoutes.animateToPage(context, page: QuizPage());
                       navigateBackToPuzzleCallback();
-                      Navigator.of(context)
-                          .popAndPushNamed(ProfilePage.pageRoute);
-                    }),
-                ListTile(
-                    leading: Icon(Icons.adaptive.arrow_back_outlined),
-                    title: Text(AppLocalizations.of(context)!.logOutButton,
-                        style: tileTextStyle),
-                    onTap: () async {
-                      navigateBackToPuzzleCallback();
-                      await LoginService.logOut(context);
-                    }),
-              ],
+                      Navigator.of(context).popAndPushNamed(QuizMenu.pageRoute);
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ListTile(
+                      leading: const Icon(ProfilePage.icon),
+                      title: Text(AppLocalizations.of(context)!.profileScreen,
+                          style: tileTextStyle),
+                      onTap: () {
+                        navigateBackToPuzzleCallback();
+                        Navigator.of(context)
+                            .popAndPushNamed(ProfilePage.pageRoute);
+                      }),
+                  ListTile(
+                      leading: Icon(Icons.adaptive.arrow_back_outlined),
+                      title: Text(AppLocalizations.of(context)!.logOutButton,
+                          style: tileTextStyle),
+                      onTap: () async {
+                        navigateBackToPuzzleCallback();
+                        await LoginService.logOut(context);
+                      }),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
