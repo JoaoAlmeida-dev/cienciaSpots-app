@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:iscte_spots/models/requests/spot_info_request.dart';
+import 'package:iscte_spots/models/requests/topic_request.dart';
 import 'package:iscte_spots/pages/home/scanPage/qr_scan_camera_controls.dart';
 import 'package:iscte_spots/pages/home/scanPage/scanner_overlay_painter.dart';
 import 'package:iscte_spots/pages/quiz/quiz_list_menu.dart';
@@ -10,10 +13,11 @@ import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
 import 'package:iscte_spots/widgets/util/iscte_theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
+
+import '../../../models/database/tables/database_spot_table.dart';
+import '../../../models/spot.dart';
 
 class QRScanPageOpenDay extends StatefulWidget {
   const QRScanPageOpenDay({
@@ -133,9 +137,7 @@ class QRScanPageOpenDayState extends State<QRScanPageOpenDay> {
         ),
         if (_requesting)
           const Center(
-            child: DynamicLoadingWidget(
-              strokeWidth: 10,
-            ),
+            child: DynamicLoadingWidget(),
           ),
       ],
     );
@@ -159,33 +161,50 @@ class QRScanPageOpenDayState extends State<QRScanPageOpenDay> {
         barcode: barcode.barcodes.first,
       );
       LoggerService.instance.debug(spotInfoRequest);
-      bool continueScan = false;
-      if (mounted) {
-        continueScan = await launchConfirmationDialog(
-          context,
-          spotInfoRequest,
-        );
+
+      if (!mounted) return;
+
+      await launchConfirmationDialog(
+        context,
+        spotInfoRequest,
+      );
+
+      List<Spot> spots =
+          (await DatabaseSpotTable.getAllWithIds([spotInfoRequest.id]));
+      if (spots.isNotEmpty) {
+        Spot spot = spots.first;
+        if (!spot.visited) {
+          spot.visited = true;
+          await DatabaseSpotTable.update(spot);
+        }
       }
+      if (!mounted) return;
+
+      TopicRequest topicRequestCompleted = await QRScanService.topicRequest(
+          context: context, topicID: spotInfoRequest.id);
+      await Future.delayed(const Duration(seconds: 1));
+      if (!mounted) return;
+      await Navigator.pushNamed(context, QuizMenu.pageRoute);
+      widget.navigateBackToPuzzleCallback();
+      LoggerService.instance.debug("spotInfoRequest: $topicRequestCompleted");
     } on LoginException {
       LoggerService.instance.error("LoginException");
-      if (mounted) {
-        LoginService.logOut(context);
-      }
+      if (!mounted) return;
+
+      LoginService.logOut(context);
     } on QuizLevelNotAchieved {
       LoggerService.instance.error("QuizLevelNotAchieved");
-      if (mounted) {
-        await launchQuizLevelNotAchievedErrorDialog(context);
-      }
+      if (!mounted) return;
+
+      await launchQuizLevelNotAchievedErrorDialog(context);
     } on InvalidQRException {
       LoggerService.instance.error("InvalidQRException");
-      if (mounted) {
-        await launchQRErrorDialog(context);
-      }
+      if (!mounted) return;
+      await launchQRErrorDialog(context);
     } catch (e) {
       LoggerService.instance.error(e);
-      if (mounted) {
-        await launchQRErrorDialog(context);
-      }
+      if (!mounted) return;
+      await launchQRErrorDialog(context);
     } finally {
       setState(() {
         _requesting = false;
@@ -218,8 +237,6 @@ class QRScanPageOpenDayState extends State<QRScanPageOpenDay> {
             onPressed: () async {
               LoggerService.instance.debug("Pressed \"ACCEPT\"");
               Navigator.pop(context);
-              await Navigator.pushNamed(context, QuizMenu.pageRoute);
-              widget.navigateBackToPuzzleCallback();
             },
           )
         ]);
