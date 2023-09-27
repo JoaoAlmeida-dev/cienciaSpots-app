@@ -251,6 +251,7 @@ class LeaderboardListState extends State<LeaderboardList> {
                       return Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: Card(
+                          elevation: 3,
                           child: ListTile(
                             title: Text(items[index]["name"].toString(),
                                 style: Theme.of(context)
