@@ -189,7 +189,9 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
           backgroundColor: CupertinoTheme.of(context).scaffoldBackgroundColor,
           largeTitle: Text(
             AppLocalizations.of(context)!.spotChooserScreen,
-            style: const TextStyle(color: IscteTheme.iscteColor),
+            style:         Theme.of(context).textTheme.titleLarge?.copyWith(
+            color: IscteTheme.iscteColor,
+          ),
           ),
           trailing: spotsList.isEmpty
               ? buildDynamicRefreshButton(context, displayText: false)
