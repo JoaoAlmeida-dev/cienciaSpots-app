@@ -97,15 +97,19 @@ class DatabaseSpotTable {
         existingSpots.where((spot) => !newSpotsIds.contains(spot.id)).toList();
 
     //determine which spots to update
-    List<Spot> spotsToUpdate = existingSpots.where((spot) {
-      bool spotInBothLists = newSpotsIds.contains(spot.id);
-      if (!spotInBothLists) return false;
+    List<Spot> spotsToUpdate = newSpots.where((spot) {
+      List<Spot> equalIdNewSpots =
+          existingSpots.where((element) => element.id == spot.id).toList();
+      if (equalIdNewSpots.isEmpty) return false;
 
-      Spot existingSpot = existingSpots[existingSpots.indexOf(spot)];
-      Spot newSpot = newSpots[newSpotsIds.indexOf(spot.id)];
+      bool isDifferent = false;
 
-      return existingSpot.id == newSpot.id &&
-          existingSpot.photoLink == newSpot.photoLink;
+      for (var element in equalIdNewSpots) {
+        isDifferent = isDifferent || element != spot;
+      }
+      LoggerService.instance.debug("$isDifferent : $spot");
+
+      return isDifferent;
     }).toList();
     //determine which spots to add
     List<Spot> spotsToAdd =
@@ -120,9 +124,10 @@ class DatabaseSpotTable {
     for (Spot spot in spotsToUpdate) {
       await update(spot);
     }
+    List<Spot> updatedSpots = await getAll();
 
-    LoggerService.instance
-        .debug("synced: $newSpots into $table\n result: ${await getAll()}");
+    LoggerService.instance.debug(
+        "synced: ${newSpots.join("\n")} into $table\n result: ${updatedSpots.join("\n")}");
   }
 
   static Future<int> update(Spot spot) async {

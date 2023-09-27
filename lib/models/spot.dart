@@ -23,20 +23,12 @@ class Spot {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Spot &&
-          runtimeType == other.runtimeType &&
           id == other.id &&
           photoLink == other.photoLink &&
-          description == other.description &&
-          visited == other.visited &&
-          puzzleComplete == other.puzzleComplete;
+          description == other.description;
 
   @override
-  int get hashCode =>
-      id.hashCode ^
-      photoLink.hashCode ^
-      description.hashCode ^
-      visited.hashCode ^
-      puzzleComplete.hashCode;
+  int get hashCode => id.hashCode ^ photoLink.hashCode ^ description.hashCode;
 
   factory Spot.fromMap(Map<String, dynamic> json) => Spot(
         id: json[DatabaseSpotTable.columnId],

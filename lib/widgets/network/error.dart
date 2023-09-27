@@ -1,8 +1,8 @@
-import 'package:iscte_spots/services/platform_service.dart';
-import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:iscte_spots/services/platform_service.dart';
+import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 
 class DynamicErrorWidget extends StatelessWidget {
   final Function()? onRefresh;
@@ -51,7 +51,10 @@ class DynamicErrorWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
                       display ?? AppLocalizations.of(context)!.generalError,
-                      style: Theme.of(context).textTheme.bodyLarge),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.copyWith(overflow: TextOverflow.ellipsis)),
                 ),
                 if (onRefresh != null)
                   Padding(

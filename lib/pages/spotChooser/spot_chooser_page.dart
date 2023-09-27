@@ -58,65 +58,6 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
     return OrientationBuilder(
       builder: (context, orientation) {
         return Scaffold(
-          // floatingActionButton: SpeedDial(
-          //   children: [
-          //     SpeedDialChild(
-          //       backgroundColor: Theme.of(context).primaryColor,
-          //       child: const Icon(Icons.refresh),
-          //       onTap: () {
-          //         _refreshCallback(context);
-          //       },
-          //     ),
-          //     SpeedDialChild(
-          //       backgroundColor: Theme.of(context).colorScheme.error,
-          //       child: const Icon(Icons.delete),
-          //       onTap: () async {
-          //         await DatabasePuzzlePieceTable.removeALL();
-          //         await DatabaseSpotTable.removeALL();
-          //         setState(() {
-          //           future = DatabaseSpotTable.getAll();
-          //         });
-          //       },
-          //     ),
-          //     SpeedDialChild(
-          //       backgroundColor: Colors.orange,
-          //       child: const Icon(Icons.delete_outline),
-          //       onTap: () async {
-          //         List<Spot> spots = await DatabaseSpotTable.getAll();
-          //         await DatabaseSpotTable.remove(spots.last.id);
-          //         setState(() {
-          //           future = DatabaseSpotTable.getAll();
-          //         });
-          //       },
-          //     ),
-          //     SpeedDialChild(
-          //       backgroundColor: Colors.green,
-          //       child: const Icon(Icons.add),
-          //       onTap: () async {
-          //         await DatabaseSpotTable.add(
-          //           Spot(
-          //             id: 1000,
-          //             photoLink:
-          //                 "https://media.istockphoto.com/id/1221460597/photo/yellow-vintage-tram-on-the-street-in-lisbon-portugal.jpg?s=612x612&w=0&k=20&c=E5LVWw2DH5fHsDadmyiH5KbEfWO_El1vfra1vxLZP74=",
-          //           ),
-          //         );
-          //         setState(() {
-          //           future = DatabaseSpotTable.getAll();
-          //         });
-          //       },
-          //     )
-          //   ],
-          //   child: const Icon(
-          //     Icons.add,
-          //     color: Colors.white,
-          //   ),
-          // ),
-          /*appBar: orientation == Orientation.portrait
-              ? null
-              : MyAppBar(
-                  leading: const DynamicBackIconButton(),
-                  title: AppLocalizations.of(context)!.spotChooserScreen),*/
-
           body: FutureBuilder<List<Spot>>(
             future: future,
             builder: (context, snapshot) {
@@ -142,6 +83,7 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
               }
               return RefreshIndicator(
                 onRefresh: () async => await _refreshCallback(context),
+                color: IscteTheme.iscteColor,
                 child: CustomScrollView(
                   scrollDirection: orientation == Orientation.portrait
                       ? Axis.vertical
@@ -189,9 +131,9 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
           backgroundColor: CupertinoTheme.of(context).scaffoldBackgroundColor,
           largeTitle: Text(
             AppLocalizations.of(context)!.spotChooserScreen,
-            style:         Theme.of(context).textTheme.titleLarge?.copyWith(
-            color: IscteTheme.iscteColor,
-          ),
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: IscteTheme.iscteColor,
+                ),
           ),
           trailing: spotsList.isEmpty
               ? buildDynamicRefreshButton(context, displayText: false)
@@ -288,13 +230,15 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
   Future<void> _refreshCallback(BuildContext context) async {
     LoggerService.instance.debug("refreshing spot chooser page");
     await SpotsRequestService.fetchAllSpots(context);
-    future = DatabaseSpotTable.getAll();
+    setState(() {
+      future = DatabaseSpotTable.getAll();
+    });
     if (mounted) {
       await DynamicSnackBar.showSnackBar(
         context,
         Text(AppLocalizations.of(context)!.refreshed),
         const Duration(seconds: 2),
-      ); //TODO
+      );
     }
     setState(() {});
   }
