@@ -37,79 +37,109 @@ class _ChooseSpotTileState extends State<ChooseSpotTile> {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: widget.spot.photoLink,
-      progressIndicatorBuilder: (BuildContext context, String string,
-          DownloadProgress downloadProgress) {
-        return const DynamicLoadingWidget();
-      },
-      imageBuilder: (BuildContext context, ImageProvider imageProvider) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: Stack(
-            fit: StackFit.expand,
+    return Card(
+      elevation: 10,
+      child: InkWell(
+        enableFeedback: true,
+        //splashColor: Colors.black,
+        onTap: () async =>
+            await widget.chooseSpotCallback(widget.spot, context),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ImageFiltered(
-                imageFilter: ImageFilter.blur(
-                  sigmaX: isSpotPuzzleComplete ? 0 : widget.blur,
-                  sigmaY: isSpotPuzzleComplete ? 0 : widget.blur,
-                ),
-                child: InkWell(
-                  enableFeedback: true,
-                  //splashColor: Colors.black,
-                  onTap: () async =>
-                      await widget.chooseSpotCallback(widget.spot, context),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.cover,
+              Stack(
+                children: [
+                  CachedNetworkImage(
+                    imageUrl: widget.spot.photoLink,
+                    progressIndicatorBuilder: (BuildContext context,
+                        String string, DownloadProgress downloadProgress) {
+                      return const Center(child: DynamicLoadingWidget());
+                    },
+                    imageBuilder:
+                        (BuildContext context, ImageProvider imageProvider) {
+                      return ClipRRect(
+                        // borderRadius: BorderRadius.circular(5.0),
+                        child: isSpotPuzzleComplete
+                            ? Image(
+                                image: imageProvider,
+                                fit: BoxFit.fitWidth,
+                              )
+                            : ImageFiltered(
+                                imageFilter: ImageFilter.blur(
+                                  sigmaX: widget.blur,
+                                  sigmaY: widget.blur,
+                                ),
+                                child: Image(
+                                  image: imageProvider,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
+                      );
+                    },
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: Card(
+                        color: IscteTheme.greyColor.withOpacity(0.3),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Center(
+                            child: isSpotPuzzleComplete || isSpotVisited
+                                ? const Icon(
+                                    Icons.check,
+                                    size: 30,
+                                  )
+                                : FutureBuilder<double>(
+                                    future: _completePercentageFuture,
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<double> snapshot) {
+                                      if (snapshot.hasData) {
+                                        return Text(
+                                          "${(snapshot.data! * 100).round()}%",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium
+                                              ?.copyWith(
+                                                  color: IscteTheme.iscteColor),
+                                          maxLines: 1,
+                                        );
+                                      } else {
+                                        return const DynamicLoadingWidget();
+                                      }
+                                    },
+                                  ),
+                          ),
+                        ),
                       ),
                     ),
+                  )
+                ],
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    widget.spot.description,
+                    softWrap: true,
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(color: IscteTheme.iscteColor),
                   ),
                 ),
               ),
-              Positioned(
-                right: 10,
-                top: 10,
-                child: SizedBox(
-                  width: 80,
-                  height: 40,
-                  child: Card(
-                    color: IscteTheme.greyColor.withOpacity(0.3),
-                    child: Center(
-                      child: isSpotVisited
-                          ? const Icon(
-                              Icons.check,
-                              size: 30,
-                            )
-                          : FutureBuilder<double>(
-                              future: _completePercentageFuture,
-                              builder: (BuildContext context,
-                                  AsyncSnapshot<double> snapshot) {
-                                if (snapshot.hasData) {
-                                  return Text(
-                                    "${(snapshot.data! * 100).round()}%",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.copyWith(
-                                            color: IscteTheme.iscteColor),
-                                    maxLines: 1,
-                                  );
-                                } else {
-                                  return const DynamicLoadingWidget();
-                                }
-                              },
-                            ),
-                    ),
-                  ),
-                ),
-              )
             ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

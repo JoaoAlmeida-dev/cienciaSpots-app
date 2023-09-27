@@ -13,7 +13,7 @@ import 'package:iscte_spots/services/auth/login_service.dart';
 import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:iscte_spots/services/quiz/quiz_exceptions.dart';
 
-const API_ADDRESS = BackEndConstants.API_ADDRESS;
+// const API_ADDRESS = BackEndConstants.API_ADDRESS;
 const API_ADDRESS_TEST = "http://192.168.1.66";
 const FLICKR_API_KEY = "c16f27dcc1c8674dd6daa3a26bd24520";
 const ISCTE_DEFAULT_QUESTION_IMAGE_URL =
@@ -30,8 +30,8 @@ class QuizService {
       client.badCertificateCallback =
           ((X509Certificate cert, String host, int port) => true);
 
-      final request =
-          await client.getUrl(Uri.parse('$API_ADDRESS/api/quizzes'));
+      final request = await client
+          .getUrl(Uri.parse('${BackEndConstants.API_ADDRESS}/api/quizzes'));
 
       request.headers.set('content-type', 'application/json');
       request.headers.add("Authorization", "Token $apiToken");
@@ -68,8 +68,8 @@ class QuizService {
 
       //final request = await client.postUrl(
       //  Uri.parse('${BackEndConstants.API_ADDRESS}/api/quizzes/$quiz'));
-      final request = await client
-          .postUrl(Uri.parse('$API_ADDRESS/api/quizzes/$quiz/trials'));
+      final request = await client.postUrl(Uri.parse(
+          '${BackEndConstants.API_ADDRESS}/api/quizzes/$quiz/trials'));
 
       request.headers.add("Authorization", "Token $apiToken");
       request.headers.set('content-type', 'application/json');
@@ -100,7 +100,7 @@ class QuizService {
       //final request = await client.postUrl(
       //  Uri.parse('${BackEndConstants.API_ADDRESS}/api/quizzes/$quiz'));
       final request = await client.getUrl(Uri.parse(
-          '$API_ADDRESS/api/quizzes/$quizNumber/trials/$trialNumber'));
+          '${BackEndConstants.API_ADDRESS}/api/quizzes/$quizNumber/trials/$trialNumber'));
 
       request.headers.add("Authorization", "Token $apiToken");
       request.headers.set('content-type', 'application/json');
@@ -128,7 +128,8 @@ class QuizService {
           "Submitting answers of trial to server: ${jsonEncode(answersMap)}");
 
       http.Response response = await http.post(
-        Uri.parse('$API_ADDRESS/api/quizzes/$quizId/trials/$trialId/answer'),
+        Uri.parse(
+            '${BackEndConstants.API_ADDRESS}/api/quizzes/$quizId/trials/$trialId/answer'),
         headers: <String, String>{
           "Authorization": "Token $apiToken",
           'content-type': 'application/json; charset=utf-8',

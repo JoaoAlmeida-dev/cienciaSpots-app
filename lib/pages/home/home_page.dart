@@ -1,4 +1,8 @@
-import 'package:iscte_spots/models/database/tables/database_spot_table.dart';
+import 'package:confetti/confetti.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iscte_spots/models/spot.dart';
 import 'package:iscte_spots/pages/home/nav_drawer/drawer.dart';
 import 'package:iscte_spots/pages/home/puzzle/puzzle_page.dart';
@@ -7,24 +11,19 @@ import 'package:iscte_spots/pages/home/state/puzzle_state.dart';
 import 'package:iscte_spots/pages/home/widgets/sucess_scan_widget.dart';
 import 'package:iscte_spots/pages/leaderboard/leaderboard_screen.dart';
 import 'package:iscte_spots/pages/spotChooser/spot_chooser_page.dart';
+import 'package:iscte_spots/pages/timeline/feedback_form.dart';
 import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:iscte_spots/services/platform_service.dart';
 import 'package:iscte_spots/services/shared_prefs_service.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_icon_button.dart';
-import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
+import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_progress_indicator.dart';
 import 'package:iscte_spots/widgets/iscte_confetti_widget.dart';
 import 'package:iscte_spots/widgets/my_app_bar.dart';
 import 'package:iscte_spots/widgets/my_bottom_bar.dart';
 import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 import 'package:iscte_spots/widgets/util/overlays.dart';
-import 'package:confetti/confetti.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../widgets/dynamic_widgets/dynamic_progress_indicator.dart';
-import '../timeline/feedback_form.dart';
+import '../../services/puzzle_service.dart';
 import 'widgets/completed_challenge_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,8 +45,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int? currentPuzzleNumber;
   bool _showSucessPage = false;
 
-  //late Future<Map> futureProfile;
-  //late Future<SpotRequest> currentPemit;
   final ValueNotifier<bool> _completedAllPuzzlesBool =
       SharedPrefsService().allPuzzleCompleteNotifier;
   final ValueNotifier<Spot?> _currentSpotNotifier =
@@ -102,60 +99,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _tabController.animateTo(widget.scanSpotIndex);
   }
 
-  completePuzzleCallback() async {
-    LoggerService.instance.debug("Completed Puzzle!!");
-    _confettiController.play();
-    Spot? spot = _currentSpotNotifier.value;
-    if (spot != null) {
-      spot.puzzleComplete = true;
-      DatabaseSpotTable.update(spot);
-    }
-    await DynamicAlertDialog.showDynamicDialog(
-      context: context,
-      icon: Icon(
-        PlatformService.instance.isIos
-            ? CupertinoIcons.checkmark_seal
-            : Icons.verified_outlined,
-        size: 40,
-      ),
-      title: Text(
-        AppLocalizations.of(context)!.puzzleCompleteDialogTitle,
-        maxLines: 3,
-      ),
-      content: Text(AppLocalizations.of(context)!.puzzleCompleteDialog),
-      actions: [
-        DynamicTextButton(
-          onPressed: Navigator.of(context).pop,
-          child: Text(
-              AppLocalizations.of(context)!.puzzleCompleteDialogCancelButton,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: IscteTheme.iscteColor)),
-        ),
-        DynamicTextButton(
-          onPressed: () {
-            navigatetoScan();
-            Navigator.of(context).pop();
-          },
-          style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(IscteTheme.iscteColor),
-            foregroundColor: MaterialStatePropertyAll(Colors.white),
-          ),
-          child: Text(
-            AppLocalizations.of(context)!.puzzleCompleteDialogConfirmButton,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium
-                ?.copyWith(color: Colors.white),
-          ),
-        ),
-      ],
-    );
-
-    setState(() {});
-  }
-
   void showSuccessPage() {
     setState(() {
       _showSucessPage = true;
@@ -195,6 +138,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   tabController: _tabController,
                   initialIndex: 0,
                 ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => PuzzleService.PuzzleCompletePost(
+              context: context,
+              confettiController: _confettiController,
+              spot: _currentSpotNotifier.value,
+              navigatetoScan: navigatetoScan,
+              navigatetoPuzzle: navigateBackToPuzzle),
+          child: const FaIcon(FontAwesomeIcons.puzzlePiece)),
       body: Builder(builder: (context) {
         return orientation == Orientation.landscape
             ? Row(
@@ -341,7 +292,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               builder: (context, constraints) {
                                 return PuzzlePage(
                                   spot: currentSpot,
-                                  completeCallback: completePuzzleCallback,
+                                  completeCallback: () =>
+                                      PuzzleService.PuzzleCompletePost(
+                                    context: context,
+                                    confettiController: _confettiController,
+                                    spot: _currentSpotNotifier.value,
+                                    navigatetoScan: navigatetoScan,
+                                    navigatetoPuzzle: navigateBackToPuzzle,
+                                  ),
                                   constraints: constraints,
                                 );
                               },

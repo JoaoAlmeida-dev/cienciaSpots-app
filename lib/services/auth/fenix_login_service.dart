@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:http/http.dart' as http;
+import 'package:iscte_spots/helper/constants.dart';
 import 'package:iscte_spots/services/logging/LoggerService.dart';
 
 import 'auth_storage_service.dart';
@@ -15,7 +16,7 @@ class IscteLoginService {
   static const IDP_CLIENT_ID = '0oa2y4zd1pm9krr2o417';
   static const IDP_REDIRECT_URI = 'pt.iscteiul.vultos:/callback';
   static const IDP_ISSUER = 'https://$IDP_DOMAIN/oauth2/ausyeqjx8GS8Nj1Y9416';
-  static const API_ADDRESS = "https://194.210.120.193";
+  // static const API_ADDRESS = "https://194.210.120.193";
   static const FlutterAppAuth appAuth = FlutterAppAuth();
 
   static Map<String, dynamic> parseIdToken(String idToken) {
@@ -79,7 +80,8 @@ class IscteLoginService {
       client.badCertificateCallback =
           ((X509Certificate cert, String host, int port) => true);
 
-      final request = await client.postUrl(Uri.parse('$API_ADDRESS/api/auth/'));
+      final request = await client
+          .postUrl(Uri.parse('${BackEndConstants.API_ADDRESS}/api/auth/'));
 
       request.headers.set('content-type', 'application/json');
       var tokenRequestBody =

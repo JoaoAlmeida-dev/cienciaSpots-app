@@ -7,6 +7,7 @@ class DatabaseSpotTable {
   static const table = 'spotTable';
 
   static const columnId = '_id';
+  static const columnName = 'description';
   static const columnPhotoLink = 'photo_link';
   static const columnVisited = 'visited';
   static const columnPuzzleComplete = 'puzzleComplete';
@@ -16,6 +17,7 @@ class DatabaseSpotTable {
       CREATE TABLE $table(
       $columnId INTEGER PRIMARY KEY,
       $columnPhotoLink TEXT UNIQUE,
+      $columnName TEXT,
       $columnVisited BOOLEAN NOT NULL CHECK ( $columnVisited IN ( 0 , 1 ) ) DEFAULT 0,
       $columnPuzzleComplete BOOLEAN NOT NULL CHECK ( $columnVisited IN ( 0 , 1 ) ) DEFAULT 0
       )

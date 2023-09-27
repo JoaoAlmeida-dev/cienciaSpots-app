@@ -140,13 +140,16 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
                   ),
                 ]);
               }
-              return CustomScrollView(
-                scrollDirection: orientation == Orientation.portrait
-                    ? Axis.vertical
-                    : Axis.horizontal,
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: false,
-                slivers: slivers,
+              return RefreshIndicator(
+                onRefresh: () async => await _refreshCallback(context),
+                child: CustomScrollView(
+                  scrollDirection: orientation == Orientation.portrait
+                      ? Axis.vertical
+                      : Axis.horizontal,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  shrinkWrap: false,
+                  slivers: slivers,
+                ),
               );
             },
           ),
@@ -224,12 +227,6 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
         SliverAppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           leading: const DynamicBackIconButton(),
-          /*title: Text(
-            AppLocalizations.of(context)!.spotChooserScreen,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: IscteTheme.iscteColor,
-                ),
-          ),*/
           actions: [
             if (spotsList.isEmpty)
               buildDynamicRefreshButton(context, displayText: false),
@@ -261,11 +258,14 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
                     color: IscteTheme.iscteColor,
                   ),
             ),
+            centerTitle: true,
+            expandedTitleScale: 1,
             stretchModes: const [StretchMode.fadeTitle],
           ),
           floating: true,
           snap: true,
           stretch: true,
+          stretchTriggerOffset: 1,
           onStretchTrigger: () async => await _refreshCallback(context),
         ),
       ];
@@ -350,34 +350,35 @@ class _SpotChooserPageState extends State<SpotChooserPage> {
 
   Future<void> spotChooserTapCallback(Spot spot, BuildContext context) async {
     LoggerService.instance.debug("spotChooserTapCallback");
-    await DynamicAlertDialog.showDynamicDialog(
-        context: context,
-        title: Text(AppLocalizations.of(context)!.spotChooserConfirmationTitle),
-        actions: [
-          DynamicTextButton(
-            child: Text(
-              AppLocalizations.of(context)!.qrScanConfirmationCancel,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: IscteTheme.iscteColor),
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          DynamicTextButton(
-            child: Text(
-              AppLocalizations.of(context)!.qrScanConfirmationAccept,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: IscteTheme.iscteColor),
-            ),
-            onPressed: () {
-              _chooseSpotCallback(spot, context);
-              Navigator.of(context).pop();
-            },
-          ),
-        ]);
+    _chooseSpotCallback(spot, context);
+    // await DynamicAlertDialog.showDynamicDialog(
+    //     context: context,
+    //     title: Text(AppLocalizations.of(context)!.spotChooserConfirmationTitle),
+    //     actions: [
+    //       DynamicTextButton(
+    //         child: Text(
+    //           AppLocalizations.of(context)!.qrScanConfirmationCancel,
+    //           style: Theme.of(context)
+    //               .textTheme
+    //               .titleMedium
+    //               ?.copyWith(color: IscteTheme.iscteColor),
+    //         ),
+    //         onPressed: () => Navigator.of(context).pop(),
+    //       ),
+    //       DynamicTextButton(
+    //         child: Text(
+    //           AppLocalizations.of(context)!.qrScanConfirmationAccept,
+    //           style: Theme.of(context)
+    //               .textTheme
+    //               .titleMedium
+    //               ?.copyWith(color: IscteTheme.iscteColor),
+    //         ),
+    //         onPressed: () {
+    //           _chooseSpotCallback(spot, context);
+    //           Navigator.of(context).pop();
+    //         },
+    //       ),
+    //     ]);
   }
 
 //TODO remove from ui page into own service

@@ -4,17 +4,19 @@ class Spot {
   Spot({
     required this.id,
     required this.photoLink,
+    required this.description,
     this.visited = false,
     this.puzzleComplete = false,
   });
   final int id;
   final String photoLink;
+  final String description;
   bool visited;
   bool puzzleComplete;
 
   @override
   String toString() {
-    return 'Spot{id: $id, photoLink: $photoLink, visited: $visited}';
+    return 'Spot{id: $id, photoLink: $photoLink, description: $description, visited: $visited, puzzleComplete: $puzzleComplete}';
   }
 
   @override
@@ -24,6 +26,7 @@ class Spot {
           runtimeType == other.runtimeType &&
           id == other.id &&
           photoLink == other.photoLink &&
+          description == other.description &&
           visited == other.visited &&
           puzzleComplete == other.puzzleComplete;
 
@@ -31,11 +34,13 @@ class Spot {
   int get hashCode =>
       id.hashCode ^
       photoLink.hashCode ^
+      description.hashCode ^
       visited.hashCode ^
       puzzleComplete.hashCode;
 
   factory Spot.fromMap(Map<String, dynamic> json) => Spot(
         id: json[DatabaseSpotTable.columnId],
+        description: json[DatabaseSpotTable.columnName],
         photoLink: json[DatabaseSpotTable.columnPhotoLink],
         visited: json[DatabaseSpotTable.columnVisited] == 1 ? true : false,
         puzzleComplete:
@@ -45,6 +50,7 @@ class Spot {
   Map<String, dynamic> toMap() {
     return {
       DatabaseSpotTable.columnId: id,
+      DatabaseSpotTable.columnName: description,
       DatabaseSpotTable.columnPhotoLink: photoLink,
       DatabaseSpotTable.columnVisited: visited ? 1 : 0,
       DatabaseSpotTable.columnPuzzleComplete: puzzleComplete ? 1 : 0,

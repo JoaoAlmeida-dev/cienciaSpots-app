@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:iscte_spots/pages/onboarding/bottom_onboard.dart';
 import 'package:iscte_spots/pages/onboarding/onboard_tile.dart';
 import 'package:iscte_spots/pages/onboarding/skip_onboard_button.dart';
 import 'package:iscte_spots/widgets/network/error.dart';
 import 'package:iscte_spots/widgets/util/iscte_theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -144,7 +144,7 @@ class _OnboardingPageState extends State<OnboardingPage>
       // ),
       OnboardTile(
         top: Text(
-          AppLocalizations.of(context)!.onboardingTitle2,
+          AppLocalizations.of(context)!.onboardingTitleGame,
           textScaleFactor: 2,
           style: const TextStyle(color: Colors.white),
         ),
@@ -155,10 +155,8 @@ class _OnboardingPageState extends State<OnboardingPage>
             errorBuilder: _lottieErrorBuilder,
           ),
         ),
-
-
         bottom: Text(
-          AppLocalizations.of(context)!.onboardingText2,
+          AppLocalizations.of(context)!.onboardingTextGame,
           textScaleFactor: 1.5,
           style: const TextStyle(color: Colors.white),
         ),
@@ -167,7 +165,7 @@ class _OnboardingPageState extends State<OnboardingPage>
       ),
       OnboardTile(
         top: Text(
-          AppLocalizations.of(context)!.onboardingTitle3,
+          AppLocalizations.of(context)!.onboardingTitlePuzzle,
           textScaleFactor: 2,
           style: const TextStyle(color: Colors.white),
         ),
@@ -177,7 +175,7 @@ class _OnboardingPageState extends State<OnboardingPage>
         ),
         //"https://assets4.lottiefiles.com/packages/lf20_1LsvAZ.json"),
         bottom: Text(
-          AppLocalizations.of(context)!.onboardingText3,
+          AppLocalizations.of(context)!.onboardingTextPuzzle,
           textScaleFactor: 1.5,
           style: const TextStyle(color: Colors.white),
         ),
@@ -186,7 +184,7 @@ class _OnboardingPageState extends State<OnboardingPage>
       ),
       OnboardTile(
         top: Text(
-          AppLocalizations.of(context)!.onboardingTitle4,
+          AppLocalizations.of(context)!.onboardingTitleSpot,
           textScaleFactor: 2,
           style: const TextStyle(color: Colors.white),
         ),
@@ -195,7 +193,7 @@ class _OnboardingPageState extends State<OnboardingPage>
           errorBuilder: _lottieErrorBuilder,
         ),
         bottom: Text(
-          AppLocalizations.of(context)!.onboardingText4,
+          AppLocalizations.of(context)!.onboardingTextSpot,
           textScaleFactor: 1.5,
           style: const TextStyle(color: Colors.white),
         ),
@@ -204,7 +202,7 @@ class _OnboardingPageState extends State<OnboardingPage>
       ),
       OnboardTile(
         top: Text(
-          AppLocalizations.of(context)!.onboardingTitle5,
+          AppLocalizations.of(context)!.onboardingTitleRanking,
           textScaleFactor: 2,
           style: const TextStyle(color: Colors.white),
         ),
@@ -213,7 +211,7 @@ class _OnboardingPageState extends State<OnboardingPage>
           errorBuilder: _lottieErrorBuilder,
         ),
         bottom: Text(
-          AppLocalizations.of(context)!.onboardingText5,
+          AppLocalizations.of(context)!.onboardingTextRanking,
           textScaleFactor: 1.5,
           style: const TextStyle(color: Colors.white),
         ),
@@ -222,7 +220,7 @@ class _OnboardingPageState extends State<OnboardingPage>
       ),
       OnboardTile(
         top: Text(
-          AppLocalizations.of(context)!.onboardingTitle6,
+          AppLocalizations.of(context)!.onboardingTitleRepeat,
           textScaleFactor: 2,
           style: const TextStyle(color: Colors.white),
         ),
@@ -231,7 +229,7 @@ class _OnboardingPageState extends State<OnboardingPage>
           errorBuilder: _lottieErrorBuilder,
         ),
         bottom: Text(
-          AppLocalizations.of(context)!.onboardingText6,
+          AppLocalizations.of(context)!.onboardingTextRepeat,
           textScaleFactor: 1.5,
           style: const TextStyle(color: Colors.white),
         ),
