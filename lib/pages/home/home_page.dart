@@ -2,7 +2,6 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iscte_spots/models/spot.dart';
 import 'package:iscte_spots/pages/home/nav_drawer/drawer.dart';
 import 'package:iscte_spots/pages/home/puzzle/puzzle_page.dart';
@@ -14,6 +13,7 @@ import 'package:iscte_spots/pages/spotChooser/spot_chooser_page.dart';
 import 'package:iscte_spots/pages/timeline/feedback_form.dart';
 import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:iscte_spots/services/platform_service.dart';
+import 'package:iscte_spots/services/puzzle_service.dart';
 import 'package:iscte_spots/services/shared_prefs_service.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_icon_button.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_progress_indicator.dart';
@@ -23,7 +23,6 @@ import 'package:iscte_spots/widgets/my_bottom_bar.dart';
 import 'package:iscte_spots/widgets/util/iscte_theme.dart';
 import 'package:iscte_spots/widgets/util/overlays.dart';
 
-import '../../services/puzzle_service.dart';
 import 'widgets/completed_challenge_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -138,14 +137,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   tabController: _tabController,
                   initialIndex: 0,
                 ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () => PuzzleService.PuzzleCompletePost(
-              context: context,
-              confettiController: _confettiController,
-              spot: _currentSpotNotifier.value,
-              navigatetoScan: navigatetoScan,
-              navigatetoPuzzle: navigateBackToPuzzle),
-          child: const FaIcon(FontAwesomeIcons.puzzlePiece)),
+      // floatingActionButton: FloatingActionButton(
+      //     onPressed: () => PuzzleService.PuzzleCompletePost(
+      //         context: context,
+      //         confettiController: _confettiController,
+      //         spot: _currentSpotNotifier.value,
+      //         navigatetoScan: navigatetoScan,
+      //         navigatetoPuzzle: navigateBackToPuzzle),
+      //     child: const FaIcon(FontAwesomeIcons.puzzlePiece)),
       body: Builder(builder: (context) {
         return orientation == Orientation.landscape
             ? Row(
