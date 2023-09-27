@@ -24,7 +24,7 @@ class QuizService {
     try {
       String apiToken = await LoginStorageService.getBackendApiKey();
 
-      //String? apiToken = "8eb7f1e61ef68a526cf5a1fb6ddb0903bc0678c1";
+//String? apiToken = "8eb7f1e61ef68a526cf5a1fb6ddb0903bc0678c1";
 
       HttpClient client = HttpClient();
       client.badCertificateCallback =
@@ -36,9 +36,62 @@ class QuizService {
       request.headers.set('content-type', 'application/json');
       request.headers.add("Authorization", "Token $apiToken");
       final response = await request.close();
+      var quizString = """[
+  {
+    "number": 1,
+    "max_num_trials": 3,
+    "num_trials": 0,
+    "score": 0,
+    "topics": [
+      {
+        "id": 104,
+        "title": "CIÊNCIAS SOCIAIS E HUMANAS"
+      }
+    ],
+    "trials": []
+  },  {
+    "number": 1,
+    "max_num_trials": 3,
+    "num_trials": 0,
+    "score": 0,
+    "topics": [
+      {
+        "id": 104,
+        "title": "CIÊNCIAS SOCIAIS E HUMANAS"
+      }
+    ],
+    "trials": []
+  },  {
+    "number": 1,
+    "max_num_trials": 3,
+    "num_trials": 0,
+    "score": 0,
+    "topics": [
+      {
+        "id": 104,
+        "title": "CIÊNCIAS SOCIAIS E HUMANAS"
+      }
+    ],
+    "trials": []
+  },  {
+    "number": 1,
+    "max_num_trials": 3,
+    "num_trials": 0,
+    "score": 0,
+    "topics": [
+      {
+        "id": 104,
+        "title": "CIÊNCIAS SOCIAIS E HUMANAS"
+      }
+    ],
+    "trials": []
+  }
+]""";
 
-      var decodedJson =
-          jsonDecode(await response.transform(utf8.decoder).join());
+      // var decodedJson =
+      //     jsonDecode(await response.transform(utf8.decoder).join());
+      var decodedJson = jsonDecode(quizString);
+
       LoggerService.instance.debug(decodedJson);
       if (response.statusCode == 403) {
         LoginService.logOut(context);

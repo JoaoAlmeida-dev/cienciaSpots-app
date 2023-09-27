@@ -1,29 +1,24 @@
+import 'package:confetti/confetti.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:iscte_spots/models/database/tables/database_spot_table.dart';
 import 'package:iscte_spots/models/spot.dart';
 import 'package:iscte_spots/pages/home/nav_drawer/drawer.dart';
-import 'package:iscte_spots/pages/home/puzzle/puzzle_page.dart';
 import 'package:iscte_spots/pages/home/scanPage/openday_qr_scan_page.dart';
-import 'package:iscte_spots/pages/home/state/puzzle_state.dart';
 import 'package:iscte_spots/pages/home/widgets/sucess_scan_widget.dart';
 import 'package:iscte_spots/pages/leaderboard/leaderboard_screen.dart';
-import 'package:iscte_spots/pages/spotChooser/spot_chooser_page.dart';
+import 'package:iscte_spots/pages/quiz/quiz_list_menu.dart';
 import 'package:iscte_spots/services/logging/LoggerService.dart';
 import 'package:iscte_spots/services/platform_service.dart';
 import 'package:iscte_spots/services/shared_prefs_service.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_alert_dialog.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_icon_button.dart';
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
-import 'package:iscte_spots/widgets/iscte_confetti_widget.dart';
 import 'package:iscte_spots/widgets/my_app_bar.dart';
 import 'package:iscte_spots/widgets/my_bottom_bar.dart';
 import 'package:iscte_spots/widgets/util/iscte_theme.dart';
-import 'package:iscte_spots/widgets/util/overlays.dart';
-import 'package:confetti/confetti.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../widgets/dynamic_widgets/dynamic_progress_indicator.dart';
 import '../timeline/feedback_form.dart';
 import 'widgets/completed_challenge_widget.dart';
 
@@ -199,40 +194,33 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         return orientation == Orientation.landscape
             ? Row(
                 children: [
-                  ValueListenableBuilder<Spot?>(
-                      valueListenable: _currentSpotNotifier,
-                      builder: (context, value, _) {
-                        return NavigationRail(
-                          backgroundColor: Colors.white,
-                          selectedIconTheme: Theme.of(context).iconTheme,
-                          onDestinationSelected: (index) {
-                            if (index == 0) {
-                              Scaffold.of(context).openDrawer();
-                            } else {
-                              if (value?.photoLink != null) {
-                                String imgLink = value!.photoLink;
-                                showHelpOverlay(
-                                  context,
-                                  Image.network(imgLink),
-                                  orientation,
-                                );
-                              }
-                            }
-                          },
-                          selectedIndex: 0,
-                          destinations: <NavigationRailDestination>[
-                            NavigationRailDestination(
-                              icon: const Icon(Icons.menu),
-                              selectedIcon: const Icon(Icons.menu),
-                              label: Text(AppLocalizations.of(context)!.menu),
-                            ),
-                            NavigationRailDestination(
-                              icon: const Icon(Icons.question_mark),
-                              label: Text(AppLocalizations.of(context)!.help),
-                            ),
-                          ],
+                  NavigationRail(
+                    backgroundColor: Colors.white,
+                    selectedIconTheme: Theme.of(context).iconTheme,
+                    onDestinationSelected: (index) {
+                      if (index == 0) {
+                        Scaffold.of(context).openDrawer();
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) => FeedbackForm(),
                         );
-                      }),
+                      }
+                    },
+                    selectedIndex: 0,
+                    destinations: <NavigationRailDestination>[
+                      NavigationRailDestination(
+                        icon: const Icon(Icons.menu),
+                        selectedIcon: const Icon(Icons.menu),
+                        label: Text(AppLocalizations.of(context)!.menu),
+                      ),
+                      NavigationRailDestination(
+                        icon: const Icon(Icons.menu),
+                        selectedIcon: const Icon(Icons.menu),
+                        label: Text(AppLocalizations.of(context)!.menu),
+                      )
+                    ],
+                  ),
                   const VerticalDivider(),
                   Expanded(child: buildHomeBody(challengeCompleteBool)),
                   const VerticalDivider(),
@@ -269,28 +257,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 if (!PlatformService.instance.isWeb) const FeedbackFormButon(),
               ],
             ),
-            trailing: challengeCompleteBool
-                ? null
-                : ValueListenableBuilder<Spot?>(
-                    valueListenable: _currentSpotNotifier,
-                    builder: (context, value, _) {
-                      if (value?.photoLink != null) {
-                        String imgLink = value!.photoLink;
-                        return DynamicIconButton(
-                          child: PlatformService.instance.isIos
-                              ? const Icon(
-                                  CupertinoIcons.question,
-                                  color: IscteTheme.iscteColor,
-                                )
-                              : const Icon(Icons.question_mark),
-                          onPressed: () => showHelpOverlay(
-                              context, Image.network(imgLink), orientation),
-                        );
-                      } else {
-                        return Container();
-                      }
-                    },
-                  ),
           );
   }
 
@@ -327,98 +293,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return SafeArea(
       child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: ValueListenableBuilder<Spot?>(
-              valueListenable: _currentSpotNotifier,
-              builder: (context, currentSpot, _) {
-                if (currentSpot != null) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Stack(
-                          children: [
-                            LayoutBuilder(
-                              builder: (context, constraints) {
-                                return PuzzlePage(
-                                  spot: currentSpot,
-                                  completeCallback: completePuzzleCallback,
-                                  constraints: constraints,
-                                );
-                              },
-                            ),
-                            IscteConfetti(
-                                confettiController: _confettiController),
-                          ],
-                        ),
-                      ),
-                      ValueListenableBuilder<double>(
-                          valueListenable: PuzzleState.currentPuzzleProgress,
-                          builder: (context, double progress, _) {
-                            return Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context)!
-                                      .puzzleProgress((progress * 100).round()),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(
-                                        color: IscteTheme.iscteColor,
-                                      ),
-                                ),
-                                TweenAnimationBuilder<double>(
-                                  duration: const Duration(milliseconds: 250),
-                                  curve: Curves.easeInOut,
-                                  tween: Tween<double>(
-                                    begin: 0,
-                                    end: progress,
-                                  ),
-                                  builder: (context, value, _) =>
-                                      DynamicProgressIndicator(
-                                    value: value,
-                                    color: IscteTheme.iscteColor,
-                                    backgroundColor: IscteTheme.greyColor,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                              ],
-                            );
-                          }),
-                    ],
-                  );
-                } else {
-                  return Center(
-                    child: InkWell(
-                      onTap: () => Navigator.of(context)
-                          .pushNamed(SpotChooserPage.pageRoute),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              SpotChooserPage.icon,
-                              size: 100,
-                            ),
-                            Text(
-                              AppLocalizations.of(context)!.spotChooserScreen,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                    color: IscteTheme.iscteColor,
-                                  ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                }
-              })),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return const QuizList();
+            },
+          )),
     );
   }
 }

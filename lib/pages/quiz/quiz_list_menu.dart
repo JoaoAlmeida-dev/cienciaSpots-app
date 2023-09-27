@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:iscte_spots/models/quiz/trial.dart';
 import 'package:iscte_spots/models/timeline/topic.dart';
 import 'package:iscte_spots/pages/quiz/quiz_page.dart';
@@ -8,9 +11,6 @@ import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_back_button.dart';
 import 'package:iscte_spots/widgets/my_app_bar.dart';
 import 'package:iscte_spots/widgets/network/error.dart';
 import 'package:iscte_spots/widgets/util/iscte_theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../models/quiz/quiz.dart';
 import '../../services/quiz/quiz_service.dart';
@@ -79,18 +79,14 @@ class QuizListState extends State<QuizList> {
     if (mounted) {
       Navigator.of(context)
           .push(
-        MaterialPageRoute(
-          builder: (context) => QuizPage(
-            quizNumber: quizNumber,
-            trial: trial,
-          ),
-        ),
-      )
-          .then((_) {
-        setState(() {
-          futureQuizList = fetchFunction(context);
-        });
-      });
+            MaterialPageRoute(
+              builder: (context) => QuizPage(
+                quizNumber: quizNumber,
+                trial: trial,
+              ),
+            ),
+          )
+          .then((_) => setState(() => futureQuizList = fetchFunction(context)));
     }
   }
 

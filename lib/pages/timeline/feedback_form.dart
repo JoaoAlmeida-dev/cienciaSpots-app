@@ -12,7 +12,7 @@ class FeedbackFormButon extends StatelessWidget {
   const FeedbackFormButon({
     Key? key,
   }) : super(key: key);
-
+static
   @override
   Widget build(BuildContext context) {
     return DynamicIconButton(

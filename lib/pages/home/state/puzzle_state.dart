@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:iscte_spots/models/database/tables/database_puzzle_piece_table.dart';
 import 'package:iscte_spots/models/puzzle_piece.dart';
 import 'package:iscte_spots/models/spot.dart';
-import 'package:iscte_spots/pages/home/puzzle/puzzle_page.dart';
+// import 'package:iscte_spots/pages/home/puzzle/puzzle_page.dart';
 import 'package:iscte_spots/services/shared_prefs_service.dart';
 
 class PuzzleState {
@@ -35,7 +35,7 @@ class PuzzleState {
   static Future<void> _updateCurrentPuzzleProgress(int spotID) async {
     int nPlacedPieces =
         (await DatabasePuzzlePieceTable.getAllFromSpot(spotID)).length;
-    currentPuzzleProgress.value =
-        (nPlacedPieces / (PuzzlePage.cols * PuzzlePage.rows));
+    // currentPuzzleProgress.value =
+    //     (nPlacedPieces / (PuzzlePage.cols * PuzzlePage.rows));
   }
 }
