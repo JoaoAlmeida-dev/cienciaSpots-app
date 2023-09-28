@@ -2,7 +2,7 @@ name: iscte_spots
 description: App to represent Iscte in the European Researchers Night.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.3+28
+version: 1.0.3+29
 
 environment:
   sdk: ">=2.14.0 <3.0.0"
@@ -47,10 +47,18 @@ dependencies:
   google_fonts: ^3.0.1
   permission_handler: ^10.2.0
 
+
 dev_dependencies:
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "Resources/Img/Logo/brainLogo_NoTransparent.jpg"
 
 flutter:
   generate: true
