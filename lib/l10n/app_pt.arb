@@ -198,8 +198,7 @@
     "trialInvalidAnswerException":  "Respostas inválidas",
     "trialFailedSubmitAnswer": "Erro a submeter as respostas",
 
-
-    "puzzleProgress":"Progresso: {progressValue}%",
+    "puzzleProgress":"{puzzleName} - Progresso: {progressValue}%",
     "puzzleCompleteDialogTitle":"Parabéns\n Recebeste pontos extra!",
     "puzzleCompleteDialog":"Agora procura os Spots e digitaliza o código QR que lá encontrarás ou completa mais puzzles.",
     "puzzleCompleteDialogConfirmButton":"Vou procurar o Spot",

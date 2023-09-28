@@ -198,7 +198,7 @@
     "trialInvalidAnswerException":  "Invalid answers",
     "trialFailedSubmitAnswer": "Failed to submit the answers",
 
-    "puzzleProgress":"Progress: {progressValue}%",
+    "puzzleProgress":"{puzzleName} - Progress: {progressValue}%",
      "puzzleCompleteDialogTitle":"Congratulations\n You were awarded aditional points!",
     "puzzleCompleteDialog":"Now look for the Spot with the theme in the photo and scan the QR code you will find there.",
     "puzzleCompleteDialogConfirmButton":"I will search for the Spot",

@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 children: [
                   ValueListenableBuilder<Spot?>(
                       valueListenable: _currentSpotNotifier,
-                      builder: (context, value, _) {
+                      builder: (context, currentSpot, _) {
                         return NavigationRail(
                           backgroundColor: Colors.white,
                           selectedIconTheme: Theme.of(context).iconTheme,
@@ -159,8 +159,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             if (index == 0) {
                               Scaffold.of(context).openDrawer();
                             } else {
-                              if (value?.photoLink != null) {
-                                String imgLink = value!.photoLink;
+                              if (currentSpot?.photoLink != null) {
+                                String imgLink = currentSpot!.photoLink;
                                 showHelpOverlay(
                                   context,
                                   Image.network(imgLink),
@@ -265,8 +265,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                     QRScanPageOpenDay(
                       navigateBackToPuzzleCallback: navigateBackToPuzzle,
-                      //changeImage: changeCurrentSpot,
-                      //completedAllPuzzle: _completedAllPuzzles,
                     ),
                   ],
                 ),
@@ -315,8 +313,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  AppLocalizations.of(context)!
-                                      .puzzleProgress((progress * 100).round()),
+                                  AppLocalizations.of(context)!.puzzleProgress(
+                                    (progress * 100).round(),
+                                    currentSpot.description,
+                                  ),
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleMedium
