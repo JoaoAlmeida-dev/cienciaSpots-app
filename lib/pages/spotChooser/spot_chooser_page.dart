@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iscte_spots/models/spot.dart';
 import 'package:iscte_spots/pages/home/state/puzzle_state.dart';
 import 'package:iscte_spots/services/logging/LoggerService.dart';
@@ -27,7 +28,7 @@ void main() async {
 class SpotChooserPage extends StatefulWidget {
   SpotChooserPage({Key? key}) : super(key: key);
   static const String pageRoute = "SpotChooser";
-  static const IconData icon = Icons.directions_run;
+  static const IconData icon = FontAwesomeIcons.puzzlePiece;
 
   @override
   State<SpotChooserPage> createState() => _SpotChooserPageState();
