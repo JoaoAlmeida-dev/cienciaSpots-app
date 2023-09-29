@@ -179,7 +179,7 @@
     "quizFinish":"Finish the Quiz",
     "quizGenerating":"We are creating your quiz",
     "quizAvailable":"Available quizzes",
-    "quizNoneAvailable":"There are no available quizzes at the moment",
+    "quizNoneAvailable":"There are no available quizzes at the moment\n Try scanning one of our QRCodes with the app!",
     "quizContinueAttempt":"Do you want to continue this attempt?",
     "quizFinishedRecommendLeaderboard":"Now that you finished a quiz you should check your position in the leaderboard.\n\nOr choose a new spot to start scanning again.",
 
