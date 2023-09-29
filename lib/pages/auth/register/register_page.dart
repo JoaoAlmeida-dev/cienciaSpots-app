@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:iscte_spots/models/auth/registration_form_result.dart';
 import 'package:iscte_spots/pages/auth/register/registration_error.dart';
 import 'package:iscte_spots/services/auth/registration_service.dart';
@@ -6,8 +8,6 @@ import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_loading_widget.dart'
 import 'package:iscte_spots/widgets/dynamic_widgets/dynamic_text_button.dart';
 import 'package:iscte_spots/widgets/network/error.dart';
 import 'package:iscte_spots/widgets/util/iscte_theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lottie/lottie.dart';
 
 import 'acount_register_widget.dart';
@@ -122,13 +122,22 @@ class _RegisterPageState extends State<RegisterPage>
                       ),
                       Flexible(
                         flex: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        child: DynamicTextButton(
+                          onPressed: _onSubmit,
+                          child: Text(AppLocalizations.of(context)!
+                              .createAccountButton),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 2,
+                        child: Wrap(
+                          direction: Axis.vertical,
+                          alignment: WrapAlignment.center,
+                          runAlignment: WrapAlignment.center,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          verticalDirection: VerticalDirection.down,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            DynamicTextButton(
-                              onPressed: _onSubmit,
-                              child: Text(AppLocalizations.of(context)!.submit),
-                            ),
                             Text(AppLocalizations.of(context)!
                                 .loginAlreadyHaveAccount),
                             DynamicTextButton(

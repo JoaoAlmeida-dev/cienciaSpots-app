@@ -103,6 +103,7 @@ class LoginService {
     await IscteLoginService.logout();
     await LoginStorageService.deleteUserCredentials();
     await OnboadingService.removeOnboard();
+
     Navigator.of(context).popUntil((route) => route.isFirst);
     Navigator.of(context).pushReplacementNamed(AuthPage.pageRoute);
 
@@ -120,6 +121,32 @@ $decodedResponse");
     //Removing placed puzzle pieces
     DatabasePuzzlePieceTable.removeALL();
 
+    return;
+  }
+
+  static Future<void> deleteAccount(BuildContext context) async {
+    LoggerService.instance.debug("Deleting user account:");
+    const FlutterSecureStorage secureStorage = FlutterSecureStorage();
+
+    HttpClient client = HttpClient();
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
+
+    final HttpClientRequest request = await client.deleteUrl(
+        Uri.parse('${BackEndConstants.API_ADDRESS}/api/auth/delete'));
+
+    String? apiToken = await secureStorage.read(key: "backend_api_key");
+    request.headers.add("Authorization", "Token $apiToken");
+
+    request.headers.set('content-type', 'application/json');
+
+    HttpClientResponse response = await request.close();
+    var decodedResponse =
+        await jsonDecode(await response.transform(utf8.decoder).join());
+    LoggerService.instance.debug(decodedResponse);
+    if (response.statusCode == 200) {
+      await logOut(context);
+    }
     return;
   }
 }

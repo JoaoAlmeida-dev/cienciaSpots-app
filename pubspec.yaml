@@ -2,7 +2,7 @@ name: iscte_spots
 description: App to represent Iscte in the European Researchers Night.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.21+29
+version: 1.0.22+30
 
 environment:
   sdk: ">=2.14.0 <3.0.0"

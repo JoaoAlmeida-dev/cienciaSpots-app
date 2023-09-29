@@ -84,47 +84,25 @@ class _LoginOpendayState extends State<LoginPage>
                             generateFormButtons(),
                           ]),
                     ),
-                    if (DONTHAVEACCOUNT)
-                      Flexible(
-                        flex: 1,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(AppLocalizations.of(context)!
-                                .loginDontHaveAccount),
-                            DynamicTextButton(
-                              onPressed: widget.changeToSignUp,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(Icons.adaptive.arrow_forward),
-                                  Text(
-                                    AppLocalizations.of(context)!
-                                        .loginRegisterButton,
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
                     Flexible(
                       flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Wrap(
+                        direction: Axis.vertical,
+                        alignment: WrapAlignment.spaceEvenly,
+                        // crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(AppLocalizations.of(context)!
-                              .loginAlreadyHaveAccount),
+                              .loginDontHaveAccount),
                           DynamicTextButton(
                             onPressed: widget.changeToSignUp,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                Icon(Icons.adaptive.arrow_forward),
                                 Text(
                                   AppLocalizations.of(context)!
                                       .loginRegisterButton,
-                                ),
-                                Icon(Icons.adaptive.arrow_forward),
+                                )
                               ],
                             ),
                           )
